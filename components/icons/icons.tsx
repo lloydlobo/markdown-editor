@@ -8,6 +8,7 @@ export function DocumentIcon(props: IconProps) {
       {...props}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
+      width="17" height="17"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
     >

@@ -1,6 +1,6 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ActionType, AppContext } from "@/store/AppContext";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, Stack } from "@chakra-ui/react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import React, { useContext, useState } from "react";
 import { INote } from "@/types/inote";
@@ -36,9 +36,11 @@ export default function PreviewBody() {
       maxWidth={{ md: isPreview ? "100vw" : "" }}
       marginInline={{ md: isPreview ? "auto" : "" }}
     >
-      <ReactMarkdown>
-        {activeNote?.content ? activeNote.content : ""}
-      </ReactMarkdown>
+      <Stack>
+        <ReactMarkdown>
+          {activeNote?.content ? activeNote.content : ""}
+        </ReactMarkdown>
+      </Stack>
     </Box>
   );
 }

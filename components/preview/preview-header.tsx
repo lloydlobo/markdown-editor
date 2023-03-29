@@ -11,9 +11,13 @@ export default function PreviewHeader() {
   };
 
   return (
-    <Box>
+    <Box
+      minHeight={{ base: "10", md: "10" }}
+      _dark={{ bg: "whiteAlpha.100" }}
+      bg="blackAlpha.100"
+    >
       <Flex align="center" justify="space-between">
-        <Text textTransform="uppercase">preview</Text>
+        <Box textTransform="uppercase">preview</Box>
         <IconButton
           icon={<ViewIcon />}
           onClick={handleOnClick}

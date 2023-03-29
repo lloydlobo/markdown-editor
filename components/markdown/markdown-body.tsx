@@ -53,23 +53,24 @@ export default function MarkdownBody() {
   };
 
   return (
-    <Box overflowY={"auto"}>
+    <>
       <VisuallyHidden>
         <label htmlFor="markdownEditor">Markdown editor</label>
       </VisuallyHidden>
       <Textarea
         // boxSize={"85vh"}
         // minInlineSize={{ base: "45vw", md: "48vw" }}
+        // minH="80vh"
         id="markdownEditor"
+        boxSize={"full"}
         data-testid="markdownArea"
         value={activeNote?.content ? activeNote.content : ""}
         onChange={updateContent}
         w="full"
-        minH="80vh"
         p="4"
         fontFamily="monospace"
         fontSize={["2xs", "xs"]}
       />
-    </Box>
+    </>
   );
 }

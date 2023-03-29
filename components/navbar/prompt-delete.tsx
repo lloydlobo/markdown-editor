@@ -25,18 +25,29 @@ export default function PromptDelete({ isOpen, onClose }: PromptDeleteProps) {
   const toast = useToast();
 
   const { state, dispatch } = useContext(AppContext);
-  const { activeNote } = state;
+  const { notes, activeNote } = state;
+  console.log(notes, activeNote);
 
   function handleOnClickSecondary() {
     if (!activeNote) return;
-    // dispatch({ type: ActionType.DELETE_NOTE, note: activeNote });
-    onClose();
-    toast({
-      title: "Deleted note",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
+    if (notes?.find((note) => note.nanoid === activeNote.nanoid)) {
+      dispatch({ type: ActionType.DELETE_NOTE, note: activeNote });
+      onClose();
+      toast({
+        title: "Deleted note",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      onClose();
+      toast({
+        title: "Cannot delete unsaved note",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   }
 
   if (activeNote === null) {

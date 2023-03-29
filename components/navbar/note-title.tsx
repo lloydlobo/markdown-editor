@@ -104,38 +104,23 @@ export default function NoteTitle() {
             document name
           </chakra.label>
         </Hide>
+
         <Tooltip
           label={activeNote ? `rename ${activeNote.title.trim()}.md` : ""}
         >
-          <InputGroup
+          <Input
+            data-testid="titleInput"
+            value={activeNote ? activeNote.title : ""}
+            onChange={(e) => handleOnChangeTitle(e)}
+            isDisabled={activeNote ? false : true}
+            placeholder={activeNote ? "Untitled" : ""}
+            _placeholder={{ opacity: 1, color: "whiteAlpha.700" }}
             variant="flushed"
-            pointerEvents={activeNote ? "auto" : "none"}
+            my="0"
             size="sm"
-          >
-            <VisuallyHidden>
-              <InputLeftAddon children="Note title" />
-            </VisuallyHidden>
-            <Input
-              my="0"
-              pr="8"
-              data-testid="titleInput"
-              value={activeNote ? activeNote.title : ""}
-              disabled={activeNote ? false : true}
-              onChange={(e) => handleOnChangeTitle(e)}
-              placeholder={activeNote ? "Untitled" : ""}
-              _placeholder={{ opacity: 1, color: "whiteAlpha.700" }}
-              borderColor={"transparent"}
-            />
-            <Box pos="absolute" opacity="0.3" right="2">
-              <Tooltip label="Automatic extension `.md` suffixed to the title">
-                <InputRightAddon
-                  borderColor={"transparent"}
-                  aria-label="markdown file extension as .md"
-                  children=".md"
-                />
-              </Tooltip>
-            </Box>
-          </InputGroup>
+            pr="8"
+            borderColor="transparent"
+          />
         </Tooltip>
       </Box>
     </Flex>

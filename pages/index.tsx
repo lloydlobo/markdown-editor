@@ -1,4 +1,5 @@
 import Editor from "@/components/editor/editor";
+import Navbar from "@/components/navbar/navbar";
 import {
   Textarea,
   chakra,
@@ -17,7 +18,9 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <Grid autoFlow="row" maxH="100vh" h="full">
+      <Grid className="wrapper" autoFlow="row" maxH="100vh" h="full">
+        <Navbar />
+
         <Flex justify="space-between" align="center">
           <Flex align="center" gap="2">
             <Box>

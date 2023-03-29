@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { Roboto, Roboto_Slab, Roboto_Mono } from "next/font/google";
 import { theme } from "@/lib/theme";
+import { AppContextProvider } from "@/store/AppContext";
 
 // <style jsx global>{`
 //   html { font-family: ${roboto.style.fontFamily} !important; }
@@ -11,7 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ChakraProvider theme={updateTheme}>
-        <Component {...pageProps} />
+        <AppContextProvider>
+          <Component {...pageProps} />
+        </AppContextProvider>
       </ChakraProvider>
     </>
   );

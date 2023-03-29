@@ -1,3 +1,4 @@
+import Editor from "@/components/editor/editor";
 import { Textarea, chakra, Box, Center, Grid, Flex, Stack, StackItem, Button } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -34,7 +35,9 @@ export default function Home() {
               </Flex>
             ) : null}
 
-            <Textarea name="" id="" value={content} boxSize="fit-content" w="full" minHeight="container.sm" h="full" />
+            {/* <Textarea name="" id="" value={content} boxSize="fit-content" w="full" minHeight="container.sm" h="full" /> */}
+
+            <Editor />
 
             <Box>
               {content}

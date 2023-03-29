@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.4",
     "@chakra-ui/styled-system": "^2.7.0",
+    "@chakra-ui/system": "^2.5.4",
     "@chakra-ui/theme-tools": "^2.0.16",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -20,6 +22,7 @@
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.9.2",
+    "nanoid": "^4.0.2",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",

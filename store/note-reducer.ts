@@ -66,9 +66,6 @@ export function noteReducer(state: IAppState, action: IAction): IAppState {
     case ActionType.TOGGLE_PREVIEW: {
       return { ...state, isPreview: !state.isPreview };
     }
-
-
-
     default:
       throw Error("noteReducer called: Unknown action: " + action.type);
   }

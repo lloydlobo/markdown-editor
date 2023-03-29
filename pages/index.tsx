@@ -21,15 +21,12 @@ export default function Home() {
         </Flex>
 
         <Center w="full">
-          <Grid w="full" gap={[2, 4]} gridTemplateColumns={{ 
-
-          base: isOpen ? 'min(33vw, 300px) 1fr 0' : '1fr 1fr',
-          md: isOpen ? 'min(33vw, 300px) 1fr 1fr' : '1fr 1fr',
-
+          <Grid w="full" gap={[1, 2]} gridTemplateColumns={{
+            base: isOpen ? 'min(43vw, 400px) 1fr 0' : '1fr 1fr',
+            md: isOpen ? 'min(33vw, 300px) 1fr 1fr' : '1fr 1fr',
           }}>
             {isOpen ? (
               <Flex
-                // position={{ base: "absolute", md: "relative" }}
                 bg="whiteAlpha.500" _dark={{ bg: "blackAlpha.500" }} w="full" h="full">
                 <Stack  >
                   <StackItem>Document 1</StackItem>

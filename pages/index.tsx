@@ -21,29 +21,20 @@ export default function Home() {
           </Flex>
         </Flex>
 
-        <Center w="full">
-          <Grid w="full" gap={[1, 2]} gridTemplateColumns={{
-            base: isOpen ? 'min(43vw, 400px) 1fr 0' : '1fr 1fr',
-            md: isOpen ? 'min(33vw, 300px) 1fr 1fr' : '1fr 1fr',
-          }}>
-            {isOpen ? (
-              <Flex
-                bg="whiteAlpha.500" _dark={{ bg: "blackAlpha.500" }} w="full" h="full">
-                <Stack  >
-                  <StackItem>Document 1</StackItem>
-                </Stack>
-              </Flex>
-            ) : null}
+        <Flex
+          gap={[1, 2]}
+        >
+          {isOpen ? (
+            <Flex
+              bg="whiteAlpha.500" _dark={{ bg: "blackAlpha.500" }} w="fit-content" h="full">
+              <Stack  >
+                <StackItem>Document 1</StackItem>
+              </Stack>
+            </Flex>
+          ) : null}
 
-            {/* <Textarea name="" id="" value={content} boxSize="fit-content" w="full" minHeight="container.sm" h="full" /> */}
-
-            <Editor />
-
-            <Box>
-              {content}
-            </Box>
-          </Grid>
-        </Center>
+          <Stack><Editor /></Stack>
+        </Flex>
       </Box>
     </>
 

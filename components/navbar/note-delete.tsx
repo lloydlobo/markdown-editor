@@ -1,7 +1,11 @@
-import { IconButton } from "@chakra-ui/react";
+import { IconButton, Tooltip } from "@chakra-ui/react";
 import React from "react";
 import { DeleteIcon } from "../icons/icons";
 
 export default function NoteDelete() {
-  return <IconButton aria-label="delete note" icon={<DeleteIcon />} />;
+  return (
+    <Tooltip label="delete note">
+      <IconButton aria-label="delete note" icon={<DeleteIcon />} />
+    </Tooltip>
+  );
 }

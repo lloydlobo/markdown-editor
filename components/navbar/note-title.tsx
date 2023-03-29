@@ -6,8 +6,12 @@ import {
   Hide,
   IconButton,
   Input,
+  InputGroup,
+  InputLeftAddon,
+  InputRightAddon,
   Tooltip,
   useToast,
+  VisuallyHidden,
 } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import { DocumentIcon } from "../icons/icons";
@@ -74,7 +78,11 @@ export default function NoteTitle() {
       pointerEvents={activeNote ? "auto" : "none"}
       alignItems="center"
     >
-      <Tooltip label="copy markdown">
+      <Tooltip
+        label={
+          activeNote ? `copy contents of ${activeNote.title.trim()}.md` : ""
+        }
+      >
         <IconButton
           variant="ghost"
           stroke="gray.300"
@@ -84,10 +92,7 @@ export default function NoteTitle() {
         />
       </Tooltip>
 
-      <Box
-        ml="2"
-        title={activeNote ? `${activeNote.title.trim()}.md` : "untitled.md"}
-      >
+      <Box ml="2">
         <Hide below="md">
           <chakra.label
             lineHeight="none"
@@ -99,19 +104,39 @@ export default function NoteTitle() {
             document name
           </chakra.label>
         </Hide>
-        <Input
-          my="0"
-          data-testid="titleInput"
-          value={activeNote ? activeNote.title : ""}
-          onChange={(e) => handleOnChangeTitle(e)}
-          size="sm"
-          pointerEvents={activeNote ? "auto" : "none"}
-          disabled={activeNote ? false : true}
-          placeholder={activeNote ? "Untitled" : ""}
-          _placeholder={{ opacity: 1, color: "whiteAlpha.700" }}
-          variant="flushed"
-          borderColor={"transparent"}
-        />
+        <Tooltip
+          label={activeNote ? `rename ${activeNote.title.trim()}.md` : ""}
+        >
+          <InputGroup
+            variant="flushed"
+            pointerEvents={activeNote ? "auto" : "none"}
+            size="sm"
+          >
+            <VisuallyHidden>
+              <InputLeftAddon children="Note title" />
+            </VisuallyHidden>
+            <Input
+              my="0"
+              pr="8"
+              data-testid="titleInput"
+              value={activeNote ? activeNote.title : ""}
+              disabled={activeNote ? false : true}
+              onChange={(e) => handleOnChangeTitle(e)}
+              placeholder={activeNote ? "Untitled" : ""}
+              _placeholder={{ opacity: 1, color: "whiteAlpha.700" }}
+              borderColor={"transparent"}
+            />
+            <Box pos="absolute" opacity="0.3" right="2">
+              <Tooltip label="Automatic extension `.md` suffixed to the title">
+                <InputRightAddon
+                  borderColor={"transparent"}
+                  aria-label="markdown file extension as .md"
+                  children=".md"
+                />
+              </Tooltip>
+            </Box>
+          </InputGroup>
+        </Tooltip>
       </Box>
     </Flex>
   );

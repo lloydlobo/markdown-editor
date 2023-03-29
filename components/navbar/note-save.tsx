@@ -1,5 +1,5 @@
 import { ActionType, AppContext } from "@/store/AppContext";
-import { Button, ButtonGroup, chakra, IconButton } from "@chakra-ui/react";
+import { Button, ButtonGroup, chakra, IconButton, Tooltip } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import { SaveIcon } from "../icons/icons";
 import { useToast } from "@chakra-ui/react";
@@ -24,6 +24,8 @@ export default function NoteSave() {
   }
 
   return (
+
+  <Tooltip label="save changes">
     <Button
       aria-label="Save changes"
       onClick={handleOnClick}
@@ -41,5 +43,7 @@ export default function NoteSave() {
         save changes
       </chakra.span>
     </Button>
+    </Tooltip>
   );
+
 }

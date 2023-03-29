@@ -18,6 +18,7 @@ export default function AsideButton() {
       <IconButton
         aria-label="Menu toggle button"
         onClick={handleToggleSidebar}
+        h="full"
         icon={isOpenMenu ? <CloseIcon /> : <HamburgerMenuIcon />}
       />
     </>

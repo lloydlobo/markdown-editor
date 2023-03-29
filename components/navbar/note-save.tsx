@@ -9,34 +9,37 @@ export default function NoteSave() {
   const { activeNote } = state;
   const toast = useToast();
 
-  const handleOnClick = () => {
-    if (!activeNote) return;
-
+  function handleOnClick() {
+    if (!activeNote) {
+      return;
+    }
     dispatch({ type: ActionType.SAVE_CHANGES, note: activeNote });
+    // description: `${activeNote.title} saved`,
     toast({
       title: "Saved changes",
-      // description: `${activeNote.title} saved`,
       status: "success",
       duration: 3000,
       isClosable: true,
     });
-  };
+  }
 
   return (
-      <Button
-        textTransform="capitalize"
-        data-testid="saveButton"
-        aria-label="Save changes"
-        w="fit-content"
-        alignItems="center"
-        onClick={handleOnClick}
-        disabled={activeNote ? false : true}
-        pointerEvents={activeNote ? "auto" : "none"}
-      >
-        <chakra.div pe={{ md: "2" }}><SaveIcon aria-hidden="true" /></chakra.div>
-        <chakra.span display={{ base: "none", md: "inline-block" }}>
-          save changes
-        </chakra.span>
-      </Button>
+    <Button
+      aria-label="Save changes"
+      onClick={handleOnClick}
+      data-testid="saveButton"
+      textTransform="capitalize"
+      alignItems="center"
+      w="fit-content"
+      disabled={activeNote ? false : true}
+      pointerEvents={activeNote ? "auto" : "none"}
+    >
+      <chakra.div aria-hidden="true" pe={{ md: "2" }}>
+        <SaveIcon aria-hidden="true" />
+      </chakra.div>
+      <chakra.span display={{ base: "none", md: "inline-block" }}>
+        save changes
+      </chakra.span>
+    </Button>
   );
 }

@@ -11,7 +11,7 @@ export default function Logo() {
       borderInlineEndColor="blackAlpha.400"
       h="full"
     >
-      <Text textTransform="uppercase">markdown</Text>
+      <Text letterSpacing="widest" textTransform="uppercase">markdown</Text>
     </Box>
   );
 }

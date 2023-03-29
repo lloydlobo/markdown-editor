@@ -1,10 +1,16 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 import { mode } from '@chakra-ui/theme-tools'
+
+
+const config: ThemeConfig = {
+  initialColorMode: 'dark',
+  useSystemColorMode: true,
+};
 
 
 // Defualt styles.
 const styles = {
-  global: (props) => ({
+  global: (props: Record<string, any>) => ({
     body: {
       fontFamily: 'body',
       color: mode('gray.800', 'whiteAlpha.900')(props),

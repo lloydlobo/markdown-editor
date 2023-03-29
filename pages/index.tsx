@@ -1,6 +1,4 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Textarea, chakra, HStack, Box, Center, Grid, Flex, Stack, StackItem, Button } from "@chakra-ui/react";
+import { Textarea, chakra, Box, Center, Grid, Flex, Stack, StackItem, Button } from "@chakra-ui/react";
 import { useState } from "react";
 
 export default function Home() {

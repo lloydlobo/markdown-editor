@@ -23,7 +23,7 @@ export default function SidebarNewNoteButton() {
   };
 
   return (
-    <Button leftIcon={<PlusSquareIcon />} onClick={addNewNote}>
+    <Button w="full" leftIcon={<PlusSquareIcon />} onClick={addNewNote}>
       Create new
     </Button>
 

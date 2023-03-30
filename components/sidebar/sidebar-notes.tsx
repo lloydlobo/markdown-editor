@@ -9,10 +9,9 @@ interface Props { }
 export default function SidebarNotes({ }: Props) {
   const { state, dispatch } = useContext(AppContext);
   const { notes } = state;
-  console.log(notes);
 
   return (
-    <List>
+    <List spacing={{base:"2", md:"3"}}>
       {notes !== null ?
         notes.map((note: INote, idxNote: number) => (
           <SidebarNote

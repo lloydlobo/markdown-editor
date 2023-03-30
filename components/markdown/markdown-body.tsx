@@ -60,9 +60,6 @@ export default function MarkdownBody() {
         <label htmlFor="markdownEditor">Markdown editor</label>
       </VisuallyHidden>
       <Textarea
-        // boxSize={"85vh"}
-        // minInlineSize={{ base: "45vw", md: "48vw" }}
-        // minH="80vh"
         id="markdownEditor"
         boxSize={"full"}
         data-testid="markdownArea"
@@ -71,6 +68,7 @@ export default function MarkdownBody() {
         w="full"
         p="4"
         fontFamily="monospace"
+        placeholder="Markdown is awesome!!"
         fontSize={["2xs", "xs"]}
       />
     </>

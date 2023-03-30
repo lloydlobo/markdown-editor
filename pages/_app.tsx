@@ -11,7 +11,16 @@ import { AppContextProvider } from "@/store/AppContext";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ChakraProvider theme={updateTheme}>
+      <ChakraProvider
+        theme={updateTheme}
+        toastOptions={{
+          defaultOptions: {
+            position: 'bottom', 
+            duration: 3000,
+            isClosable: true,
+          }
+        }}
+      >
         <AppContextProvider>
           <Component {...pageProps} />
         </AppContextProvider>
@@ -20,10 +29,8 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 }
 
-//
-// Google fonts with next need to be loaded in a tsx file here.
-// .
 
+// Google fonts with NextJS need to be loaded in a tsx file here.
 const roboto = Roboto({ weight: ["300", "400"], subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 const robotoSlab = Roboto_Slab({

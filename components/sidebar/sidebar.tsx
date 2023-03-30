@@ -1,8 +1,11 @@
-import { Box, Text, chakra, Stack, Grid } from "@chakra-ui/react";
 import React from "react";
+
+import { Box, Text, chakra, Stack, Grid } from "@chakra-ui/react";
+
 import SidebarNotes from "@/components/sidebar/sidebar-notes";
 import Logo from "@/components/sidebar/sidebar-logo";
 import SidebarNewNoteButton from "@/components/sidebar/sidebar-new-note-button";
+import { SidebarThemeToggle } from "@/components/sidebar/sidebar-theme-toggle";
 
 export default function Sidebar() {
   return (
@@ -37,7 +40,7 @@ export default function Sidebar() {
             </Box>
             <SidebarNotes />
           </Stack>
-          {/* <ThemeToggle/> */}
+          <SidebarThemeToggle/> 
         </Grid>
       </>
     </chakra.aside>

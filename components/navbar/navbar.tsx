@@ -17,7 +17,6 @@ export default function Navbar() {
             gridTemplateColumns={{
               base: "56px 1fr",
               md: "72px 1fr",
-              xl: "auto 1fr 20px 150px",
             }}
           >
             <AsideButton />

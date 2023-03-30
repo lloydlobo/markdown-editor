@@ -1,10 +1,11 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ActionType, AppContext } from "@/store/AppContext";
+import React, { useContext, useState } from "react";
 import { Box, Button, Stack } from "@chakra-ui/react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
-import React, { useContext, useState } from "react";
 import { INote } from "@/types/inote";
 import { nanoid } from "nanoid";
+import { getTimestamp } from "@/utils/get-timestamp";
 
 export default function PreviewBody() {
   const { state, dispatch } = useContext(AppContext);
@@ -16,6 +17,7 @@ export default function PreviewBody() {
       nanoid: nanoid(),
       title: "Untitled",
       content: "",
+      createdAt: getTimestamp(),
     };
     dispatch({ type: ActionType.ADD_NOTE, note: newNote });
   };

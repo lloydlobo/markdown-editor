@@ -26,7 +26,6 @@ export default function PromptDelete({ isOpen, onClose }: PromptDeleteProps) {
 
   const { state, dispatch } = useContext(AppContext);
   const { notes, activeNote } = state;
-  console.log(notes, activeNote);
 
   function handleOnClickSecondary() {
     if (!activeNote) return;
@@ -62,8 +61,8 @@ export default function PromptDelete({ isOpen, onClose }: PromptDeleteProps) {
         <ModalCloseButton />
         <ModalBody>
           <Box>
-            Are you sure you want to delete{" "}
-            <chakra.strong>{activeNote.title}.md</chakra.strong>?
+            Are you sure you want to permanently delete{" "}
+            <chakra.strong>{activeNote.title}{".md"}</chakra.strong>{"?"}
           </Box>
         </ModalBody>
 

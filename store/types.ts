@@ -13,6 +13,7 @@ export interface IAppState {
 export type IAction = {
   type: ActionType;
   note?: INote;
+  payload?: any;
 };
 
 export interface IAppContext {

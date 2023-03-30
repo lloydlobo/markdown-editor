@@ -1,43 +1,35 @@
 import Editor from "@/components/editor/editor";
 import Navbar from "@/components/navbar/navbar";
+import Sidebar from "@/components/sidebar/sidebar";
+import { AppContext } from "@/store/AppContext";
 import {
-  Textarea,
   chakra,
   Box,
-  Center,
   Grid,
-  Flex,
-  Stack,
-  StackItem,
-  Button,
+  useToast,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, } from "react";
+import { useLocalStorage } from "@/hooks/use-local-storage";
+
 
 export default function Home() {
-  const content = "# Hello world";
-  const [isOpen, setIsOpen] = useState(false);
+  const { state, dispatch } = useContext(AppContext);
+  const { isPreview } = state;
+
+  const toast = useToast();
+  useLocalStorage({ dispatch: dispatch, toast: toast });
+
   return (
-    <>
-      <Grid className="wrapper" autoFlow="row" maxH="100vh" h="full">
+    <Grid
+      className={`wrapper ${isPreview ? "preview-open" : "preview-closed"}`}
+    >
+      <Sidebar />
+      <Box>
         <Navbar />
-
-        <Flex gap={[1, 2]} align="center">
-          {isOpen ? (
-            <Flex
-              bg="whiteAlpha.500"
-              _dark={{ bg: "blackAlpha.500" }}
-              w="fit-content"
-              h="full"
-            >
-              <Stack>
-                <StackItem>Document 1</StackItem>
-              </Stack>
-            </Flex>
-          ) : null}
-
+        <chakra.main>
           <Editor />
-        </Flex>
-      </Grid>
-    </>
+        </chakra.main>
+      </Box>
+    </Grid>
   );
 }

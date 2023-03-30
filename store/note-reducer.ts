@@ -4,7 +4,8 @@ import { IAction, IAppState } from "./types";
 export function noteReducer(state: IAppState, action: IAction): IAppState {
   switch (action.type) {
     case ActionType.FETCH_NOTES: {
-      return { ...state, notes: state?.notes };
+      // return { ...state, notes: state?.notes };
+      return { ...state, notes: action?.payload };
     }
     case ActionType.SET_ACTIVE_NOTE: {
       state.unsavedData = false;

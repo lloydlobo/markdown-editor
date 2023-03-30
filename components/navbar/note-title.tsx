@@ -79,9 +79,7 @@ export default function NoteTitle() {
       alignItems="center"
     >
       <Tooltip
-        label={
-          activeNote ? `copy contents of ${activeNote.title.trim()}.md` : ""
-        }
+      // label={ activeNote ? `copy contents of ${activeNote.title.trim()}.md` : "" }
       >
         <IconButton
           variant="ghost"
@@ -106,7 +104,7 @@ export default function NoteTitle() {
         </Hide>
 
         <Tooltip
-          label={activeNote ? `rename ${activeNote.title.trim()}.md` : ""}
+        // label={activeNote ? `rename ${activeNote.title.trim()}.md` : ""}
         >
           <Input
             data-testid="titleInput"

@@ -1,8 +1,20 @@
+body {
+  overflow:hidden;
+  position:fixed;
+  height:100vh;
+}
+
+.wrapper {
+  grid-template-columns: 250px 100vw;
+}
+
 .sidebar {
+  visibility: visible;
   opacity: 1;
 }
 
 .menu-closed .wrapper .sidebar {
+  visibility: invisible !important;
   width: 0;
   height: 0;
   padding: 0;
@@ -13,3 +25,16 @@
 .menu-closed .wrapper {
   grid-template-columns: 0 100vw;
 }
+
+.preview-open .preview {
+  display: block;
+}
+
+.preview-closed .preview {
+  display: hidden;
+}
+
+.preview {
+  height: calc(100vh - 80px);
+}
+

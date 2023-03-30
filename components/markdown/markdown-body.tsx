@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/icons";
 import { INote } from "@/types/inote";
 import { nanoid } from "nanoid";
+import { getTimestamp } from "@/utils/get-timestamp";
 
 export default function MarkdownBody() {
   const { state, dispatch } = useContext(AppContext);
@@ -28,6 +29,7 @@ export default function MarkdownBody() {
       nanoid: nanoid(),
       title: "Untitled",
       content: "",
+      createdAt: getTimestamp(),
     };
     dispatch({ type: ActionType.ADD_NOTE, note: newNote });
   };

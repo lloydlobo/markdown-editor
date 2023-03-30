@@ -13,7 +13,7 @@ export default function NoteDelete() {
 
   function stopPropagation(e: React.MouseEvent<HTMLElement>) {
     e.stopPropagation();
-    e.preventDefault();
+    // e.preventDefault();
   }
 
   function handleOnClick(e: React.MouseEvent<HTMLElement, MouseEvent>) {

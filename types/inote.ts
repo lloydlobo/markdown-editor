@@ -3,4 +3,5 @@ export interface INote {
   nanoid: string;
   title: string;
   content: string;
+  createdAt: string;
 }

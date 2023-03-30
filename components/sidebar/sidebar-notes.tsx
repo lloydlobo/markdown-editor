@@ -1,8 +1,8 @@
-import { AppContext } from '@/store/AppContext'
-import { INote } from '@/types/inote';
-import { Box, List } from '@chakra-ui/react';
-import React, { useContext } from 'react'
-import SidebarNote from '@/components/sidebar/sidebar-note';
+import { AppContext } from "@/store/AppContext";
+import { INote } from "@/types/inote";
+import { Box, List } from "@chakra-ui/react";
+import React, { useContext } from "react";
+import SidebarNote from "@/components/sidebar/sidebar-note";
 
 interface Props { }
 
@@ -11,8 +11,8 @@ export default function SidebarNotes({ }: Props) {
   const { notes } = state;
 
   return (
-    <List spacing={{base:"2", md:"3"}}>
-      {notes !== null ?
+    <List spacing={{ base: "1", md: "2" }}>
+      {notes !== null ? (
         notes.map((note: INote, idxNote: number) => (
           <SidebarNote
             key={`note-${note.title}-${idxNote}-${note.nanoid}`}
@@ -21,8 +21,10 @@ export default function SidebarNotes({ }: Props) {
             title={note.title}
             id={note.id}
           />
-        )) : <Box opacity="0.6">Empty notes</Box>}
+        ))
+      ) : (
+        <Box opacity="0.6">Empty notes</Box>
+      )}
     </List>
-  )
+  );
 }
-

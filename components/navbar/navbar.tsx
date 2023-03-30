@@ -11,13 +11,13 @@ export default function Navbar() {
   return (
     <>
       <Box>
-        <chakra.header>
+        <chakra.header bg="gray.50" _dark={{ bg: "gray.700" }}>
           <Grid
             alignItems="center"
             gridTemplateColumns={{
               base: "56px 1fr",
               md: "72px 1fr",
-              // xl: "auto 1fr 20px 150px",
+              xl: "auto 1fr 20px 150px",
             }}
           >
             <AsideButton />
@@ -26,7 +26,7 @@ export default function Navbar() {
               pl="6"
               pr="2"
               placeContent="center"
-              gap="6"
+              gap="7"
               alignItems="center"
               autoFlow="column"
               gridTemplateColumns={{

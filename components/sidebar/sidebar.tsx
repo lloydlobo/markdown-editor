@@ -19,7 +19,7 @@ export default function Sidebar() {
         <Box px="6"><Logo /></Box>
         <Grid gap="6">
           <Stack spacing="6" my="6">
-            <Text textTransform="uppercase" fontSize="sm" letterSpacing="widest" opacity="0.7" fontWeight="medium" px="6">
+            <Text textTransform="uppercase" fontSize="xs" letterSpacing="widest" opacity="0.7" fontWeight="medium" px="6">
               my notes
             </Text>
             <Box px="6"><SidebarNewNoteButton /></Box>

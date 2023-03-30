@@ -27,11 +27,14 @@ export default function NoteDelete() {
 
       <Tooltip label="delete note">
         <IconButton
+          variant="ghost"
           onClick={(e) => handleOnClick(e)}
           data-testid="deleteButton"
           isDisabled={activeNote ? false : true}
           aria-label="delete note"
-          icon={<DeleteIcon />}
+          icon={
+            <DeleteIcon style={{ height: "18px" }} fill="none" color="gray" />
+          }
         />
       </Tooltip>
     </>

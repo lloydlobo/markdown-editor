@@ -39,6 +39,8 @@ export default function NoteSave() {
         alignItems="center"
         w="fit-content"
         isDisabled={activeNote ? false : true}
+        bg="orange.400"
+        _dark={{ bg: "orange.400" }}
       >
         <chakra.div aria-hidden="true" pe={{ md: "2" }}>
           <SaveIcon aria-hidden="true" />

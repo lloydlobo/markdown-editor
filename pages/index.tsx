@@ -1,4 +1,16 @@
-import { Textarea, chakra, Box, Center, Grid, Flex, Stack, StackItem, Button } from "@chakra-ui/react";
+import Editor from "@/components/editor/editor";
+import Navbar from "@/components/navbar/navbar";
+import {
+  Textarea,
+  chakra,
+  Box,
+  Center,
+  Grid,
+  Flex,
+  Stack,
+  StackItem,
+  Button,
+} from "@chakra-ui/react";
 import { useState } from "react";
 
 export default function Home() {
@@ -6,39 +18,26 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-    <Box h="full">
+      <Grid className="wrapper" autoFlow="row" maxH="100vh" h="full">
+        <Navbar />
 
-      <Flex justify="space-between" align="center">
-        <Flex align="center" gap="2">
-          <Box><Button onClick={() => setIsOpen(!isOpen)}>Menu</Button></Box>
-          <chakra.div textStyle="h4" fontWeight="bold" letterSpacing="wider" textTransform="uppercase">markdown</chakra.div>
-        </Flex>
-
-        <Flex gap={[2, 4]}>
-          <Button rounded='md'>Delete</Button>
-          <Button rounded='md'>Save changes</Button>
-        </Flex>
-      </Flex>
-
-      <Center w="full">
-        <Grid w="full" gap={[2, 4]} gridTemplateColumns={{ md: isOpen ? 'min(33vw, 300px) 1fr 1fr' : '1fr 1fr' }}>
+        <Flex gap={[1, 2]} align="center">
           {isOpen ? (
-            <Flex position={{ base: "absolute", md: "relative" }} bg="whiteAlpha.500" _dark={{ bg: "blackAlpha.500" }} w="full" h="full">
-              <Stack  >
+            <Flex
+              bg="whiteAlpha.500"
+              _dark={{ bg: "blackAlpha.500" }}
+              w="fit-content"
+              h="full"
+            >
+              <Stack>
                 <StackItem>Document 1</StackItem>
               </Stack>
             </Flex>
           ) : null}
 
-          <Textarea name="" id="" value={content} boxSize="fit-content" w="full" minHeight="container.sm" h="full" />
-
-          <Box>
-            {content}
-          </Box>
-        </Grid>
-      </Center>
-    </Box>
+          <Editor />
+        </Flex>
+      </Grid>
     </>
-
   );
 }

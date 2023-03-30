@@ -66,5 +66,3 @@ function AppContextProvider({ children }: AppContextProviderProps) {
 }
 
 export { AppContext, AppContextProvider };
-
-

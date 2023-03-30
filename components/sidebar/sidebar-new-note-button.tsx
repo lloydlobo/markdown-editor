@@ -1,15 +1,14 @@
-import { Button } from '@chakra-ui/react'
 import { ActionType, AppContext } from "@/store/AppContext";
-import React, { useContext, useState } from "react";
-import { PlusSquareIcon } from '@chakra-ui/icons';
-import { nanoid } from 'nanoid';
-import { getTimestamp } from '@/utils/get-timestamp';
-import { INote } from '@/types/inote';
-
+import React, { useContext } from "react";
+import { PlusSquareIcon } from "@chakra-ui/icons";
+import { nanoid } from "nanoid";
+import { getTimestamp } from "@/utils/get-timestamp";
+import { INote } from "@/types/inote";
+import { ButtonOrange } from "../common/button-orange";
 
 export default function SidebarNewNoteButton() {
   const { state, dispatch } = useContext(AppContext);
-  const { activeNote, notes } = state;
+  // const { activeNote, notes } = state;
 
   const addNewNote = () => {
     const newNote: INote = {
@@ -23,10 +22,14 @@ export default function SidebarNewNoteButton() {
   };
 
   return (
-    <Button w="full" leftIcon={<PlusSquareIcon />} onClick={addNewNote}>
+    <ButtonOrange
+      props={{
+        w: "full",
+        leftIcon: <PlusSquareIcon />,
+        onClick: addNewNote,
+      }}
+    >
       Create new
-    </Button>
-
-  )
+    </ButtonOrange>
+  );
 }
-

@@ -9,6 +9,7 @@ import {
 import React, { useContext } from "react";
 import { SaveIcon } from "../icons/icons";
 import { useToast } from "@chakra-ui/react";
+import { ButtonOrange } from "../common/button-orange";
 
 export default function NoteSave() {
   const { state, dispatch } = useContext(AppContext);
@@ -31,16 +32,16 @@ export default function NoteSave() {
 
   return (
     <Tooltip label="save changes">
-      <Button
+      <ButtonOrange
         aria-label="Save changes"
-        onClick={handleOnClick}
         data-testid="saveButton"
-        textTransform="capitalize"
-        alignItems="center"
-        w="fit-content"
-        isDisabled={activeNote ? false : true}
-        bg="orange.400"
-        _dark={{ bg: "orange.400" }}
+        props={{
+          onClick: handleOnClick,
+          textTransform: "capitalize",
+          alignItems: "center",
+          isDisabled: activeNote ? false : true,
+          w: "fit-content",
+        }}
       >
         <chakra.div aria-hidden="true" pe={{ md: "2" }}>
           <SaveIcon aria-hidden="true" />
@@ -48,7 +49,7 @@ export default function NoteSave() {
         <chakra.span display={{ base: "none", md: "inline-block" }}>
           save changes
         </chakra.span>
-      </Button>
+      </ButtonOrange>
     </Tooltip>
   );
 }

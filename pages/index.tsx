@@ -11,7 +11,6 @@ import {
 import { useContext, } from "react";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 
-
 export default function Home() {
   const toast = useToast();
   const { state, dispatch } = useContext(AppContext);
@@ -22,9 +21,10 @@ export default function Home() {
   return (
     <Grid className={`wrapper ${isPreview ? "preview-open" : "preview-closed"}`} >
       <Sidebar />
+
       <Box>
         <Navbar />
-        <chakra.main borderInlineStart={"thin solid"} borderInlineStartColor="blackAlpha.100" _dark={{borderInlineStartColor:"whiteAlpha.100"}}>
+        <chakra.main borderInlineStart={"thin solid"} borderInlineStartColor="blackAlpha.100" _dark={{ borderInlineStartColor: "whiteAlpha.100" }}>
           <Editor />
         </chakra.main>
       </Box>

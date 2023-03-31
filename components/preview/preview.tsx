@@ -7,7 +7,11 @@ import PreviewBody from "@/components/preview/preview-body";
 
 export default function Preview() {
   return (
-    <Box className="preview" h={"calc(100vh - 80px)"} minH={"calc(100vh - 123px)"}>
+    <Box className="preview"
+    h={"calc(100vh - 80px)"} 
+    minH={"calc(100vh - 123px)"}
+    overflowY="scroll"
+    >
       <PreviewHeader />
       <PreviewBody />
     </Box>

@@ -99,7 +99,7 @@ body {
   content: "######";
 }
 
-.preview-markdown :is(ol, ul, menu) {
+.preview-markdown :is(ol li, ul li, menu li) {
   margin-inline-start: 1rem;
 }
 

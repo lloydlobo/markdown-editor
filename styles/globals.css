@@ -49,8 +49,12 @@ body {
 .preview-markdown :where(p, li) {
   font-weight: var(--chakra-fontWeights-medium);
   font-size: var(--chakra-fontSizes-sm);
-  color: var(--chakra-colors-gray-200);
   font-family: var(--chakra-fonts-heading);
+}
+
+/* Increase to classic gray color for reading preview content */
+[data-theme="dark"] .preview-markdown :where(p, li) {
+  color: var(--chakra-colors-gray-200);
 }
 
 /* Apply marker style to unordered list items */
@@ -125,12 +129,16 @@ body {
 
 /* Styles for <pre> element */
 .preview-markdown pre {
-  background-color: var(--chakra-colors-gray-700);
+  background-color: var(--chakra-colors-blackAlpha-100);
   border-radius: 5px;
   padding: 1rem;
   overflow-x: scroll;
   scroll-behavior: smooth;
   scrollbar-width: thin;
+}
+
+[data-theme="dark"] .preview-markdown pre {
+  background-color: var(--chakra-colors-gray-700);
 }
 
 /* Styles for <code> element inside <pre> */
@@ -142,7 +150,7 @@ body {
 /* Styles for <code> element outside <pre> */
 .preview-markdown :not(pre) > code {
   font-size: var(--chakra-fontSizes-xs);
-  background-color: var(--chakra-colors-gray-700);
+  background-color: var(--chakra-colors-blackAlpha-200);
   font-family: var(--chakra-fonts-code);
   overflow-wrap: break-word;
   padding-inline: 0.5ch;
@@ -150,19 +158,25 @@ body {
   border-radius: 3px;
 }
 
+[data-theme="dark"] .preview-markdown :not(pre) > code  {
+  background-color: var(--chakra-colors-gray-700);
+}
+
 /* Styles for <blockquote> element */
 .preview-markdown blockquote {
-  padding: 1rem;
+  padding: clamp(0.618rem, 1vw, 1rem);
   border-inline-start: 4px solid var(--chakra-colors-orange-400);
-  background-color: var(--chakra-colors-gray-100);
+  background-color: var(--chakra-colors-blackAlpha-50);
   margin-bottom: 1rem;
   border-radius: 2px;
 }
 
 /* Styles for children of <blockquote> element */
 .preview-markdown blockquote > :is(p, span) {
-  font-size: var(--chakra-fontSizes-sm);
-  font-weight: bold;
+  font-weight: 100;
+  /* line-height: 1.4; */
+  /* font-size: var(--chakra-fontSizes-sm); */
+  color: var(--chakra-colors-gray-600);
 }
 
 /* Dark mode styles for <blockquote> element */

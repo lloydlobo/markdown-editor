@@ -50,6 +50,25 @@ body {
   list-style-type: decimal;
 }
 
+.preview-markdown pre {
+  background-color: var(--chakra-colors-gray-700);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.preview-markdown code {
+  font-size: var(--chakra-fontSizes-xs);
+  font-family: var(--chakra-fonts-code);
+}
+
+.preview-markdown :not(pre) > code {
+  background-color: var(--chakra-colors-gray-700);
+  font-family: var(--chakra-fonts-code);
+  padding-inline: 0.5ch;
+  margin-inline: 0.2ch;
+  border-radius: 3px;
+}
+
 /* https://chakra-ui.com/docs/styled-system/css-variables */
 /* TODO: Move all to style with chakra-ui in @/lib/theme.ts */
 .preview-markdown blockquote {
@@ -57,7 +76,14 @@ body {
   border-inline-start: 4px solid var(--chakra-colors-orange-400);
   background-color: var(--chakra-colors-gray-100);
   margin-bottom: 1rem;
+  border-radius: 2px;
 }
+
+.preview-markdown blockquote > :is(p, span) {
+  font-size: var(--chakra-fontSizes-sm);
+  font-weight: bold;
+}
+
 [data-theme="dark"] .preview-markdown blockquote {
   background-color: var(--chakra-colors-gray-800);
 }
@@ -65,14 +91,29 @@ body {
 .preview-markdown blockquote > *:last-child {
   margin-block: 0;
 }
-.preview-markdown ul li::marker,
-.preview-markdown ol li::marker,
-.preview-markdown menu li::marker {
-  color: rgb(228 102 67);
-}
 
 .preview-markdown :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--chakra-fonts-heading);
   position: relative;
+  letter-spacing: var(--chakra-letterSpacings-wide);
+}
+
+.preview-markdown :where(p, li) {
+  font-weight: var(--chakra-fontWeights-medium);
+  font-size: var(--chakra-fontSizes-sm);
+  color: var(--chakra-colors-gray-200);
+  font-family: var(--chakra-fonts-heading);
+}
+
+.preview-markdown ol li::marker,
+.preview-markdown menu li::marker {
+  color: var(--chakra-colors-gray-400);
+  font-size: var(--chakra-fontSizes-sm);
+  font-weight: bold;
+}
+
+.preview-markdown ul li::marker {
+  color: rgb(228 102 67);
 }
 
 .preview-markdown :is(h1, h2, h3, h4, h5, h6)::before {
@@ -80,11 +121,9 @@ body {
   font-size: 75%;
   bottom: 1/2;
   right: 0;
-  opacity: 0.1;
-  transition-property: opacity;
+  opacity: 0.2;
   transition-delay: 300ms;
-  transition-duration: 300ms;
-  transition-timing-function: ease-out;
+  transition: opacity 300ms ease-out;
 }
 
 [data-theme="dark"] .preview-markdown :is(h1, h2, h3, h4, h5, h6)::before {

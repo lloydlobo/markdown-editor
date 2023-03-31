@@ -17,10 +17,10 @@ const styles = {
       fontFamily: "body",
       lineHeight: "base",
     },
-    ".preview-markdown :where(h1,h2,h3,h4,h5,h6)": {
-      fontFamily: "var(--chakra-fonts-heading)",
-    },
-    ".markdown-editor textarea":{
+    // ".preview-markdown :where(h1,h2,h3,h4,h5,h6)": {
+    //   fontFamily: "var(--chakra-fonts-heading)",
+    // },
+    ".markdown-editor textarea": {
       fontFamily: "var(--chakra-fonts-code)",
     },
     "*::placeholder": {
@@ -69,11 +69,42 @@ const styles = {
         opacity: 1,
       },
     },
-    h1: { fontSize: "3xl", lineHeight: "base", fontWeight: "bold" },
-    h2: { fontSize: "2xl", lineHeight: "base", fontWeight: "bold" },
-    h3: { fontSize: "xl", lineHeight: "base", fontWeight: "bold" },
-    h4: { fontSize: "md", lineHeight: "base", fontWeight: "bold" },
-    h5: { fontSize: "sm", lineHeight: "base", fontWeight: "bold" },
+    h1: {
+      fontSize: "3xl",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
+    h2: {
+      fontSize: "2xl",
+      lineHeight: "base",
+      fontWeight: "thin",
+      marginBottom: "1rem",
+    },
+    h3: {
+      fontSize: "xl",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
+    h4: {
+      fontSize: "md",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
+    h5: {
+      fontSize: "sm",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
+    h6: {
+      fontSize: "xs",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
     "p, ul, ol": { mb: "4" },
   }),
 };
@@ -137,7 +168,7 @@ const colors = {
   gray: {
     50: "#F1F2F3",
     100: "#D8DADE",
-    200: "#BFC2C9",
+    200: "#C1C4CB",
     300: "#A6AAB4",
     400: "#7D8188",
     500: "#747A8B",

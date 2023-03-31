@@ -36,9 +36,10 @@ export default function PreviewBody() {
     <Box
       maxWidth={{ md: isPreview ? "100vw" : "" }}
       marginInline={{ md: isPreview ? "auto" : "" }}
-      p="4"
+      p="6"
     >
       <Stack 
+      pb="12"
 
       >
         <ReactMarkdown className="preview-markdown">

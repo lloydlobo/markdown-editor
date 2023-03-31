@@ -8,6 +8,8 @@ export function SidebarThemeToggle() {
       aria-label="toggle theme"
       rounded="full"
       size="xs"
+      marginInline="auto"
+      w="1"
       onClick={toggleColorMode}
       icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
     />

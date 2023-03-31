@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <>
       <Box>
-        <chakra.header bg="gray.50" _dark={{ bg: "gray.700" }}>
+        <chakra.header shadow={"xl"} bg="gray.50" _dark={{ bg: "gray.700" }}>
           <Grid
             alignItems="center"
             gridTemplateColumns={{

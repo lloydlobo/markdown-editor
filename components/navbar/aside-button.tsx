@@ -1,4 +1,4 @@
-import { Button, IconButton, VisuallyHidden } from "@chakra-ui/react";
+import { AspectRatio, Button, IconButton, VisuallyHidden } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { CloseIcon, HamburgerMenuIcon } from "../icons/icons";
 
@@ -15,12 +15,25 @@ export default function AsideButton() {
       <VisuallyHidden>
         {isOpenMenu ? "close sidebar menu" : "open sidebar menu"}
       </VisuallyHidden>
-      <IconButton
-        aria-label="Menu toggle button"
-        onClick={handleToggleSidebar}
-        h="full"
-        icon={isOpenMenu ? <CloseIcon /> : <HamburgerMenuIcon />}
-      />
+
+      <AspectRatio
+
+        ratio={1}>
+
+        <IconButton
+          aria-label="Menu toggle button"
+          onClick={handleToggleSidebar}
+          h="full"
+          bg="gray.50"
+          rounded="none"
+          _hover={{ bg: "orange.400" }}
+          _dark={{
+            bg: "gray.600",
+            _hover: { bg: "orange.400" }
+          }}
+          icon={isOpenMenu ? <CloseIcon /> : <HamburgerMenuIcon />}
+        />
+      </AspectRatio>
     </>
   );
 }

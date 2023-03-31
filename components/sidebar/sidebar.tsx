@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Text, chakra, Stack, Grid } from "@chakra-ui/react";
+import { Box, Text, chakra, Stack, Grid, Flex } from "@chakra-ui/react";
 
 import SidebarNotes from "@/components/sidebar/sidebar-notes";
 import Logo from "@/components/sidebar/sidebar-logo";
@@ -15,14 +15,15 @@ export default function Sidebar() {
       h="100vh"
       pos="relative"
       // px="6"
-      py={{ base: 6, md: 6 }}
+      py={{ base: 7, md: 7 }}
       bg="blackAlpha.50"
       _dark={{ bg: "whiteAlpha.50" }}
     >
-      <>
-        <Box px="6">
+        <Flex justify="space-between" px="6">
           <Logo />
-        </Box>
+          <SidebarThemeToggle/> 
+        </Flex>
+
         <Grid gap="6">
           <Stack spacing="6" my="6">
             <Text
@@ -31,6 +32,7 @@ export default function Sidebar() {
               letterSpacing="widest"
               opacity="0.7"
               fontWeight="medium"
+              my="0"
               px="6"
             >
               my notes
@@ -40,9 +42,7 @@ export default function Sidebar() {
             </Box>
             <SidebarNotes />
           </Stack>
-          <SidebarThemeToggle/> 
         </Grid>
-      </>
     </chakra.aside>
   );
 }

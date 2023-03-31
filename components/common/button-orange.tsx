@@ -51,14 +51,14 @@ export const ButtonOrange = forwardRef<ButtonOrangeProps, As<any>>(
         <Button
           ref={ref}
           {...props}
+          onClick={handleOnClick}
+          isDisabled={isDisabled}
           lineHeight="1.2"
           transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
           fontSize="14px"
           fontWeight="semibold"
-          isDisabled={isDisabled}
           bg="orange.400"
           color="gray.50"
-          onClick={handleOnClick}
           _hover={{ bg: "orange.500" }}
           _active={{ bg: "orange.300", transform: "scale(0.98)" }} // borderColor: "#bec3c9",
           _focus={{

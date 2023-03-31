@@ -45,6 +45,10 @@ const styles = {
         },
       },
     },
+    "ul,ol": {
+      listStyle: "none",
+      // paddingInlineStart: "8px",
+    },
     ".img": {
       rounded: "lg",
     },
@@ -60,7 +64,6 @@ const styles = {
         opacity: 1,
       },
     },
-
     h1: { fontSize: "3xl", lineHeight: "base", fontWeight: "bold" },
     h2: { fontSize: "2xl", lineHeight: "base", fontWeight: "bold" },
     h3: { fontSize: "xl", lineHeight: "base", fontWeight: "bold" },

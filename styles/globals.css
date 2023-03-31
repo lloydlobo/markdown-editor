@@ -1,7 +1,7 @@
 body {
-  overflow:hidden;
-  position:fixed;
-  height:100vh;
+  overflow: hidden;
+  position: fixed;
+  height: 100vh;
 }
 
 .wrapper {
@@ -38,3 +38,30 @@ body {
   height: calc(100vh - 80px);
 }
 
+.preview-markdown :is(ol, ul, menu) {
+  margin-inline-start: 1rem;
+}
+
+.preview-markdown ul li {
+  list-style-type: disc;
+}
+
+.preview-markdown ol li {
+  list-style-type: decimal;
+}
+
+/* TODO: Move all to style with chakra-ui in @/lib/theme.ts */
+.preview-markdown blockquote {
+  padding: 1rem;
+  border-inline-start: 4px solid orange;
+  margin-bottom: 1rem;
+}
+
+.preview-markdown blockquote > *:last-child {
+  margin-block: 0;
+}
+.preview-markdown ul li::marker,
+.preview-markdown ol li::marker,
+.preview-markdown menu li::marker {
+  color: rgb(228 102 67);
+}

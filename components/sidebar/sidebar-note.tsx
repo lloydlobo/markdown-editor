@@ -50,4 +50,3 @@ export default function SidebarNote({ nanoid, createdAt, title, id }: SidebarNot
     </ListItem>
   )
 }
-

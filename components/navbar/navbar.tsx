@@ -10,14 +10,13 @@ import NoteTitle from "@/components/navbar/note-title";
 export default function Navbar() {
   return (
     <>
-      <Box>
-        <chakra.header bg="gray.50" _dark={{ bg: "gray.700" }}>
+      <Box bg="gray.700" color="gray.100">
+        <chakra.header>
           <Grid
             alignItems="center"
             gridTemplateColumns={{
               base: "56px 1fr",
               md: "72px 1fr",
-              xl: "auto 1fr 20px 150px",
             }}
           >
             <AsideButton />

@@ -1,8 +1,10 @@
 import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
+// Mental model: If you need a spacing of 40px, divide it by 4. That'll give you 10. Then use it in your component.
+
 const config: ThemeConfig = {
-  initialColorMode: "dark",
+  initialColorMode: "system", // "dark" | "light" | "system".
   useSystemColorMode: true,
 };
 
@@ -10,22 +12,27 @@ const config: ThemeConfig = {
 const styles = {
   global: (props: Record<string, any>) => ({
     body: {
-      color: mode("gray.800", "whiteAlpha.900")(props),
-      bg: mode("white", "gray.800")(props),
+      bg: mode("gray.50", "gray.900")(props),
+      color: mode( "gray.600", "gray.50",)(props),
       fontFamily: "body",
       lineHeight: "base",
     },
+    // ".preview-markdown :where(h1,h2,h3,h4,h5,h6)": {
+    //   fontFamily: "var(--chakra-fonts-heading)",
+    // },
+    ".markdown-editor textarea": {
+      fontFamily: "var(--chakra-fonts-code)",
+    },
     "*::placeholder": {
-      color: mode("gray.400", "whiteAlpha.400")(props),
+      color: mode("gray.400", "gray.200")(props),
     },
     "*, *::before, &::after": {
       borderColor: mode("gray.200", "whiteAlpha.300")(props),
       wordWrap: "break-word",
     },
-
     "html, body": {
-      bg: props.colorMode === "dark" ? "gray.900" : "gray.50",
-      color: props.colorMode === "dark" ? "gray.50" : "gray.600",
+      // bg: props.colorMode === "dark" ? "gray.900" : "gray.50",
+      // color: props.colorMode === "dark" ? "gray.50" : "gray.600",
       minH: "100vh",
       overflowX: "hidden",
       colorScheme: "dark",
@@ -43,6 +50,10 @@ const styles = {
         },
       },
     },
+    "ul,ol": {
+      listStyle: "none",
+      // paddingInlineStart: "8px",
+    },
     ".img": {
       rounded: "lg",
     },
@@ -58,12 +69,42 @@ const styles = {
         opacity: 1,
       },
     },
-
-    h1: { fontSize: "3xl", lineHeight: "base", fontWeight: "bold" },
-    h2: { fontSize: "2xl", lineHeight: "base", fontWeight: "bold" },
-    h3: { fontSize: "xl", lineHeight: "base", fontWeight: "bold" },
-    h4: { fontSize: "md", lineHeight: "base", fontWeight: "bold" },
-    h5: { fontSize: "sm", lineHeight: "base", fontWeight: "bold" },
+    h1: {
+      fontSize: "3xl",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
+    h2: {
+      fontSize: "2xl",
+      lineHeight: "base",
+      fontWeight: "thin",
+      marginBottom: "1rem",
+    },
+    h3: {
+      fontSize: "xl",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
+    h4: {
+      fontSize: "md",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
+    h5: {
+      fontSize: "sm",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
+    h6: {
+      fontSize: "xs",
+      lineHeight: "base",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+    },
     "p, ul, ol": { mb: "4" },
   }),
 };
@@ -127,7 +168,7 @@ const colors = {
   gray: {
     50: "#F1F2F3",
     100: "#D8DADE",
-    200: "#BFC2C9",
+    200: "#C1C4CB",
     300: "#A6AAB4",
     400: "#7D8188",
     500: "#747A8B",
@@ -151,8 +192,43 @@ const colors = {
   },
 };
 
+const fontSizes = {
+  xs: "0.75rem",
+  sm: "0.875rem",
+  md: "1rem",
+  lg: "1.125rem",
+  xl: "1.25rem",
+  "2xl": "1.5rem",
+  "3xl": "1.875rem",
+  "4xl": "2.25rem",
+  "5xl": "3rem",
+  "6xl": "3.75rem",
+  "7xl": "4.5rem",
+  "8xl": "6rem",
+  "9xl": "8rem",
+};
+
+const lineHeights = {
+  normal: "normal",
+  none: 1,
+  shorter: 1.25,
+  short: 1.375,
+  base: 1.5,
+  tall: 1.625,
+  taller: "2",
+  "3": ".75rem",
+  "4": "1rem",
+  "5": "1.25rem",
+  "6": "1.5rem",
+  "7": "1.75rem",
+  "8": "2rem",
+  "9": "2.25rem",
+  "10": "2.5rem",
+};
+
 export const theme = extendTheme({
   space,
+  fontSizes,
   shadows,
   colors,
   config,

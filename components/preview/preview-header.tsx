@@ -12,15 +12,19 @@ export default function PreviewHeader() {
 
   return (
     <Box
-      minHeight={{ base: "10", md: "10" }}
+      // minHeight={{ base: "10", md: "10" }}
       _dark={{ bg: "whiteAlpha.100" }}
       bg="blackAlpha.100"
+      px="4"
+      py="3"
     >
       <Flex align="center" justify="space-between">
-        <Box textTransform="uppercase">preview</Box>
+        <Box fontSize="sm" letterSpacing="widest" opacity="0.75" textTransform="uppercase">preview</Box>
         <IconButton
           icon={<ViewIcon />}
           onClick={handleOnClick}
+          size="sm"
+          variant="link"
           aria-label="Toggle markdown preview"
         />
       </Flex>

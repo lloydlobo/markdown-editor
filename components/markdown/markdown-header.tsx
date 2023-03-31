@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
 import { CopyIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+
 export default function MarkdownHeader() {
   const { state, dispatch } = useContext(AppContext);
 
@@ -18,18 +19,19 @@ export default function MarkdownHeader() {
 
   return (
     <Box
-      minHeight={{ base: "10", md: "10" }}
+      px="4"
+      py="3"
       _dark={{ bg: "whiteAlpha.100" }}
       bg="blackAlpha.100"
     >
       <Flex align="center" justify="space-between">
-        <Box textTransform="uppercase">markdown</Box>
-
+        <Box fontSize="sm" letterSpacing="widest" opacity="0.75" textTransform="uppercase">markdown</Box>
         <IconButton
           icon={<ViewIcon />}
           onClick={handleOnClick}
-          // display={{ md: "none" }}
           opacity={{ md: 0 }}
+          variant="link"
+          size="sm"
           pointerEvents={{ md: "none" }}
           aria-label="Toggle markdown preview"
         />

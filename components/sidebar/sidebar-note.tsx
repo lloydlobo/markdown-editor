@@ -1,5 +1,6 @@
 import { ActionType, AppContext } from '@/store/AppContext';
-import { Text, ListItem, Button, Show, Grid, Stack, Tooltip, IconButton, useToast, Flex, Box, HStack } from '@chakra-ui/react'
+import { convertTimestamp } from '@/utils/convert-timestamp-human';
+import { Text, ListItem, Button, Show, Grid, Stack, Tooltip, IconButton, useToast, Flex, Box, HStack, Center } from '@chakra-ui/react'
 import React, { useContext } from 'react'
 import { DocumentIcon } from '../icons/icons';
 
@@ -20,36 +21,6 @@ export default function SidebarNote({ nanoid, createdAt, title, id }: SidebarNot
     }
   }
 
-  function handleOnClickCopyMarkdown() {
-    let contentToCopy = activeNote?.content.trim();
-    if (typeof contentToCopy !== "undefined" && contentToCopy.length > 0) {
-      try {
-        navigator.clipboard.writeText(contentToCopy);
-        toast({
-          title: "Copied markdown content",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-      } catch (err) {
-        toast({
-          title: "No content to copy",
-          description: JSON.stringify(err),
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
-    } else {
-      toast({
-        title: "No content to copy",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-  }
-
   return (
     <ListItem overflowX="hidden">
       <Button variant="ghost" w="full" rounded="none" h="full" title={title} onClick={handleOnClickSetActiveNote}>
@@ -58,23 +29,18 @@ export default function SidebarNote({ nanoid, createdAt, title, id }: SidebarNot
           pos="relative"
           overflowX="auto"
           w="full"
-          gap="2"
+          gap="0"
           alignItems="center"
+          px="1"
         >
-          <Tooltip
-          // label={ activeNote ? `copy contents of ${activeNote.title.trim()}.md` : "" }
-          >
-            <IconButton
-              variant="ghost"
-              size="sm"
-              stroke="gray.300"
-              icon={<DocumentIcon aria-hidden="true" />}
-              aria-label="copy markdown"
-              onClick={handleOnClickCopyMarkdown}
-            />
-          </Tooltip>
+          <Center stroke="gray.300"><DocumentIcon aria-hidden="true" /></Center>
           <Grid ml="4" textAlign="start" py="1">
-            <Show above="sm"><Box opacity="0.5" w="fit" fontSize="xs" lineHeight="none">{createdAt}</Box></Show>
+            <Show above="sm">
+              <Box opacity="0.5" w="fit" fontSize="xs" lineHeight="none">
+                {convertTimestamp(createdAt)}
+              </Box>
+
+            </Show>
             <Box w="min" color={activeNote?.nanoid === nanoid ? "orange.400" : ""}>
               {title}
             </Box>
@@ -84,4 +50,3 @@ export default function SidebarNote({ nanoid, createdAt, title, id }: SidebarNot
     </ListItem>
   )
 }
-

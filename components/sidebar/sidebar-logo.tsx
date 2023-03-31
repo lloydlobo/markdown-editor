@@ -11,8 +11,7 @@ export default function Logo() {
       borderInlineEndColor="blackAlpha.400"
       h="full"
     >
-      <Text fontSize={{ base: "sm", md: "sm" }} lineHeight="base" fontWeight="bold" letterSpacing="0.5ch" textTransform="uppercase">markdown</Text>
+      <Text my="0" py="0" fontSize={{ base: "sm", md: "sm" }} lineHeight="base" fontWeight="bold" letterSpacing="0.5ch" textTransform="uppercase">markdown</Text>
     </Box>
   )
 }
-

@@ -1,9 +1,9 @@
-/** 
- * `convertTimestamp` function takes in a timestamp as a string, and creates a 
- * new `Date` object from it. It then extracts the month, day, and year from the 
- * `Date` object, and formats them as a string in the desired format. 
+/**
+ * `convertTimestamp` function takes in a timestamp as a string, and creates a
+ * new `Date` object from it. It then extracts the month, day, and year from the
+ * `Date` object, and formats them as a string in the desired format.
  *
- * Note: `padStart()` method is used to ensure that the, month and day have 
+ * Note: `padStart()` method is used to ensure that the, month and day have
  * leading zeros when necessary.
  */
 export function convertTimestamp(timestamp: string): string {
@@ -13,4 +13,3 @@ export function convertTimestamp(timestamp: string): string {
   const year = date.getFullYear().toString();
   return `${month}/${day}/${year}`;
 }
-

@@ -20,7 +20,7 @@ export default function Sidebar() {
     >
         <Flex justify="space-between" align="center" px="6">
           <Logo />
-          <SidebarThemeToggle/> 
+          <SidebarThemeToggle/>
         </Flex>
 
         <Grid gap="6">

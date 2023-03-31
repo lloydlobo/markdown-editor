@@ -38,7 +38,7 @@ export default function PreviewBody() {
       marginInline={{ md: isPreview ? "auto" : "" }}
       p="6"
     >
-      <Stack 
+      <Stack
       pb="12"
 
       >

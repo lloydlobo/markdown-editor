@@ -42,4 +42,3 @@ export function useLocalStorage({ dispatch, toast }: UseLocalStorageProps) {
 
   }, []);
 }
-

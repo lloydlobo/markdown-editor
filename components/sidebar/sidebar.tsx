@@ -14,18 +14,17 @@ export default function Sidebar() {
       className="sidebar"
       h="100vh"
       pos="relative"
-      // px="6"
-      py={{ base: 7, md: 7 }}
+      py={{ base: 6, md: 7 }}
       bg="blackAlpha.50"
       _dark={{ bg: "whiteAlpha.50" }}
     >
-        <Flex justify="space-between" px="6">
+        <Flex justify="space-between" align="center" px="6">
           <Logo />
           <SidebarThemeToggle/> 
         </Flex>
 
         <Grid gap="6">
-          <Stack spacing="6" my="6">
+          <Stack spacing="6" my={{base:6,md:6}}>
             <Text
               textTransform="uppercase"
               fontSize="xs"
@@ -34,6 +33,7 @@ export default function Sidebar() {
               fontWeight="medium"
               my="0"
               px="6"
+              py={{md:"3"}}
             >
               my notes
             </Text>

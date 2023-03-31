@@ -23,7 +23,6 @@ export default function MarkdownHeader() {
       py="3"
       _dark={{ bg: "whiteAlpha.100" }}
       bg="blackAlpha.100"
-    // minHeight={{ base: "10", md: "10" }}
     >
       <Flex align="center" justify="space-between">
         <Box fontSize="sm" letterSpacing="widest" opacity="0.75" textTransform="uppercase">markdown</Box>

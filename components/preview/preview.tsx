@@ -11,9 +11,8 @@ export default function Preview() {
       <PreviewHeader />
       <Box
         overflowY={"scroll"}
-        // scrollMarginTop="4"
         h={"calc(100vh - 80px)"}
-        minH={"calc(100vh - 123px)"}
+        minH={"calc(100vh - 80px)"}
       >
         <PreviewBody />
       </Box>

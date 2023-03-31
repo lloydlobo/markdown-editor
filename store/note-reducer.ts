@@ -2,6 +2,8 @@ import { ActionType } from "./AppContext";
 import { IAction, IAppState } from "./types";
 
 export function noteReducer(state: IAppState, action: IAction): IAppState {
+  console.log(`noteReducer called: ${action.type}`);
+
   switch (action.type) {
     case ActionType.FETCH_NOTES: {
       // return { ...state, notes: state?.notes };
@@ -65,7 +67,8 @@ export function noteReducer(state: IAppState, action: IAction): IAppState {
       }
     }
     case ActionType.TOGGLE_PREVIEW: {
-      return { ...state, isPreview: !state.isPreview };
+      console.log({ isPreview: state.isPreview });
+      return { ...state, isPreview: !(state.isPreview) };
     }
     default:
       throw Error("noteReducer called: Unknown action: " + action.type);

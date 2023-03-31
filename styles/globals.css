@@ -26,18 +26,6 @@ body {
   grid-template-columns: 0 100vw;
 }
 
-.preview-open .preview {
-  display: block;
-}
-
-.preview-closed .preview {
-  display: hidden;
-}
-
-.preview {
-  height: calc(100vh - 80px);
-}
-
 /* Apply font family, font size, font weight, and text color to paragraphs and list items */
 .preview-markdown :where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--chakra-fonts-heading);

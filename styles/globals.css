@@ -54,6 +54,12 @@ body {
   background-color: var(--chakra-colors-gray-700);
   border-radius: 5px;
   padding: 1rem;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  /* text-overflow: ellipsis; */
+  /* white-space: pre-wrap; */
+  /* word-wrap: break-word; */
 }
 
 .preview-markdown code {
@@ -62,8 +68,10 @@ body {
 }
 
 .preview-markdown :not(pre) > code {
+  font-size: var(--chakra-fontSizes-xs);
   background-color: var(--chakra-colors-gray-700);
   font-family: var(--chakra-fonts-code);
+  overflow-wrap: break-word;
   padding-inline: 0.5ch;
   margin-inline: 0.2ch;
   border-radius: 3px;

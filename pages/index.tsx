@@ -21,6 +21,7 @@ export default function Home() {
 
   return (
     <Grid
+    // gap="px"
       className={`wrapper ${isPreview ? "preview-open" : "preview-closed"}`}
     >
       <Sidebar />

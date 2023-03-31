@@ -18,6 +18,7 @@ import {
 import { INote } from "@/types/inote";
 import { nanoid } from "nanoid";
 import { getTimestamp } from "@/utils/get-timestamp";
+import { mode } from "@chakra-ui/theme-tools";
 
 export default function MarkdownBody() {
   const { state, dispatch } = useContext(AppContext);
@@ -63,13 +64,25 @@ export default function MarkdownBody() {
         id="markdownEditor"
         boxSize={"full"}
         data-testid="markdownArea"
+        _hover={{
+          borderColor: mode("gray.200", "gray.50"),
+          // borderTopColor: "transparent !important",
+        }}
+        _focusVisible={{
+          borderColor: mode("orange.200", "orange.200"),
+          // borderTopColor: "transparent !important",
+        }}
+        outlineColor="transparent"
+        borderColor={"transparent"}
+        rounded="none"
         value={activeNote?.content ? activeNote.content : ""}
         onChange={updateContent}
         w="full"
         p="4"
+        // ms="px"
         fontFamily="monospace"
         placeholder="Markdown is awesome!!"
-        fontSize={["2xs", "xs"]}
+        fontSize={["xs", "xs"]}
       />
     </>
   );

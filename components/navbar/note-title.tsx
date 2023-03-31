@@ -71,11 +71,21 @@ export default function NoteTitle() {
       alignItems="center"
     >
       <Tooltip
-      // label={ activeNote ? `copy contents of ${activeNote.title.trim()}.md` : "" }
+        placement="bottom"
+        hasArrow
+        gutter={16}
+        // bg="blue.400"
+        arrowSize={15}
+        openDelay={300}
+        label={
+          activeNote ? `copy contents of ${activeNote.title.trim()}.md` : ""
+        }
       >
         <IconButton
-          variant="ghost"
+          variant="solid"
           stroke="gray.300"
+          bg="transparent"
+          _hover={{bg:"blackAlpha.200"}}
           icon={<DocumentIcon aria-hidden="true" />}
           aria-label="copy markdown"
           onClick={handleOnClickCopyMarkdown}
@@ -85,10 +95,11 @@ export default function NoteTitle() {
       <Box ml="2">
         <Hide below="md">
           <chakra.label
+            // _dark={{ color: "whiteAlpha.500" }}
+            // color="blackAlpha.500"
             lineHeight="none"
             fontSize={{ base: "2xs", md: "xs" }}
-            _dark={{ color: "whiteAlpha.500" }}
-            color="blackAlpha.500"
+            color="gray.400"
             textTransform="capitalize"
           >
             document name
@@ -96,7 +107,7 @@ export default function NoteTitle() {
         </Hide>
 
         <Tooltip
-        // label={activeNote ? `rename ${activeNote.title.trim()}.md` : ""}
+          label={activeNote ? `rename ${activeNote.title.trim()}.md` : ""}
         >
           <Input
             data-testid="titleInput"

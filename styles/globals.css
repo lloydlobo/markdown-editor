@@ -83,7 +83,7 @@ body {
 
 /* Increase the opacity of the pseudo-element for headings on hover */
 [data-theme="dark"] .preview-markdown :is(h1, h2, h3, h4, h5, h6)::before {
-  opacity: 0.05;
+  opacity: 0.1;
 }
 
 /* Increase the opacity of the pseudo-element for headings on hover */

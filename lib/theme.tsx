@@ -4,7 +4,7 @@ import { mode } from "@chakra-ui/theme-tools";
 // Mental model: If you need a spacing of 40px, divide it by 4. That'll give you 10. Then use it in your component.
 
 const config: ThemeConfig = {
-  initialColorMode: "dark",
+  initialColorMode: "system", // "dark" | "light" | "system".
   useSystemColorMode: true,
 };
 
@@ -12,8 +12,8 @@ const config: ThemeConfig = {
 const styles = {
   global: (props: Record<string, any>) => ({
     body: {
-      color: mode("gray.800", "whiteAlpha.900")(props),
-      bg: mode("white", "gray.800")(props),
+      bg: mode("gray.50", "gray.900")(props),
+      color: mode( "gray.600", "gray.50",)(props),
       fontFamily: "body",
       lineHeight: "base",
     },
@@ -24,15 +24,15 @@ const styles = {
       fontFamily: "var(--chakra-fonts-code)",
     },
     "*::placeholder": {
-      color: mode("gray.400", "whiteAlpha.400")(props),
+      color: mode("gray.400", "gray.200")(props),
     },
     "*, *::before, &::after": {
       borderColor: mode("gray.200", "whiteAlpha.300")(props),
       wordWrap: "break-word",
     },
     "html, body": {
-      bg: props.colorMode === "dark" ? "gray.900" : "gray.50",
-      color: props.colorMode === "dark" ? "gray.50" : "gray.600",
+      // bg: props.colorMode === "dark" ? "gray.900" : "gray.50",
+      // color: props.colorMode === "dark" ? "gray.50" : "gray.600",
       minH: "100vh",
       overflowX: "hidden",
       colorScheme: "dark",

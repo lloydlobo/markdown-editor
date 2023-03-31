@@ -30,15 +30,13 @@ export function useLocalStorage({ dispatch, toast }: UseLocalStorageProps) {
     // If notes exist in local storage, dispatch them to the store and show user message
     if (localStorageData !== null) {
       dispatch({ type: ActionType.FETCH_NOTES, payload: localStorageData });
-
-      toast({ title: "Local storage notes found", status: "info", duration: 3000, isClosable: true, });
       dispatch({ type: ActionType.SET_ACTIVE_NOTE, payload: localStorageData[0] });
+      toast({ title: "Local storage notes found", status: "info", duration: 3000, isClosable: true, });
     } else {
       // If notes don't exist in local storage, dispatch sample data to store and save it to local storage, show user message
       dispatch({ type: ActionType.FETCH_NOTES, payload: data });
-      localStoreSaveItem(KEY_LOCAL_STORAGE_NOTES, data);
       dispatch({ type: ActionType.SET_ACTIVE_NOTE, payload: data[0] });
-
+      localStoreSaveItem(KEY_LOCAL_STORAGE_NOTES, data);
       toast({ title: "Loading sample data", status: "info", duration: 3000, isClosable: true, });
     }
 

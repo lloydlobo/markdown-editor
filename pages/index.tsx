@@ -12,10 +12,10 @@ import { useContext, } from "react";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 
 export default function Home() {
-  const toast = useToast();
   const { state, dispatch } = useContext(AppContext);
   const { isPreview } = state;
 
+  const toast = useToast();
   useLocalStorage({ dispatch: dispatch, toast: toast });
 
   return (

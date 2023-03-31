@@ -20,14 +20,11 @@ export default function Home() {
   useLocalStorage({ dispatch: dispatch, toast: toast });
 
   return (
-    <Grid
-    // gap="px"
-      className={`wrapper ${isPreview ? "preview-open" : "preview-closed"}`}
-    >
+    <Grid className={`wrapper ${isPreview ? "preview-open" : "preview-closed"}`} >
       <Sidebar />
       <Box>
         <Navbar />
-        <chakra.main>
+        <chakra.main borderInlineStart={"thin solid"} borderInlineStartColor="blackAlpha.100" _dark={{borderInlineStartColor:"whiteAlpha.100"}}>
           <Editor />
         </chakra.main>
       </Box>

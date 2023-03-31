@@ -11,8 +11,8 @@ export default function Markdown() {
     <Box
       id="markdown"
       borderInlineEndWidth="thin"
-      borderInlineEndColor="gray.200"
-      _dark={{ borderInlineEndColor: "gray.50" }}
+      borderInlineEndColor="blackAlpha.200"
+      _dark={{ borderInlineEndColor: "whiteAlpha.500" }}
     >
       <MarkdownHeader />
       <MarkdownBody />

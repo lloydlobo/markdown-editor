@@ -69,7 +69,7 @@ export default function MarkdownBody() {
           // borderTopColor: "transparent !important",
         }}
         _focusVisible={{
-          borderColor: mode("orange.200", "orange.200"),
+          borderColor: mode("orange.200", "orange.100"),
           // borderTopColor: "transparent !important",
         }}
         outlineColor="transparent"

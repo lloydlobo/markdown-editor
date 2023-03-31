@@ -38,74 +38,14 @@ body {
   height: calc(100vh - 80px);
 }
 
-.preview-markdown :is(ol, ul, menu) {
-  margin-inline-start: 1rem;
-}
-
-.preview-markdown ul li {
-  list-style-type: disc;
-}
-
-.preview-markdown ol li {
-  list-style-type: decimal;
-}
-
-.preview-markdown pre {
-  background-color: var(--chakra-colors-gray-700);
-  border-radius: 5px;
-  padding: 1rem;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  /* text-overflow: ellipsis; */
-  /* white-space: pre-wrap; */
-  /* word-wrap: break-word; */
-}
-
-.preview-markdown code {
-  font-size: var(--chakra-fontSizes-xs);
-  font-family: var(--chakra-fonts-code);
-}
-
-.preview-markdown :not(pre) > code {
-  font-size: var(--chakra-fontSizes-xs);
-  background-color: var(--chakra-colors-gray-700);
-  font-family: var(--chakra-fonts-code);
-  overflow-wrap: break-word;
-  padding-inline: 0.5ch;
-  margin-inline: 0.2ch;
-  border-radius: 3px;
-}
-
-/* https://chakra-ui.com/docs/styled-system/css-variables */
-/* TODO: Move all to style with chakra-ui in @/lib/theme.ts */
-.preview-markdown blockquote {
-  padding: 1rem;
-  border-inline-start: 4px solid var(--chakra-colors-orange-400);
-  background-color: var(--chakra-colors-gray-100);
-  margin-bottom: 1rem;
-  border-radius: 2px;
-}
-
-.preview-markdown blockquote > :is(p, span) {
-  font-size: var(--chakra-fontSizes-sm);
-  font-weight: bold;
-}
-
-[data-theme="dark"] .preview-markdown blockquote {
-  background-color: var(--chakra-colors-gray-800);
-}
-
-.preview-markdown blockquote > *:last-child {
-  margin-block: 0;
-}
-
+/* Apply font family, font size, font weight, and text color to paragraphs and list items */
 .preview-markdown :where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--chakra-fonts-heading);
   position: relative;
   letter-spacing: var(--chakra-letterSpacings-wide);
 }
 
+/* Apply font family, font size, font weight, and text color to paragraphs and list items */
 .preview-markdown :where(p, li) {
   font-weight: var(--chakra-fontWeights-medium);
   font-size: var(--chakra-fontSizes-sm);
@@ -113,6 +53,7 @@ body {
   font-family: var(--chakra-fonts-heading);
 }
 
+/* Apply marker style to unordered list items */
 .preview-markdown ol li::marker,
 .preview-markdown menu li::marker {
   color: var(--chakra-colors-gray-400);
@@ -120,10 +61,12 @@ body {
   font-weight: bold;
 }
 
+/* Apply marker style to unordered list items */
 .preview-markdown ul li::marker {
-  color: rgb(228 102 67);
+  color: var(--chakra-colors-orange-400);
 }
 
+/* Increase the opacity of the pseudo-element for headings on hover */
 .preview-markdown :is(h1, h2, h3, h4, h5, h6)::before {
   position: absolute;
   font-size: 75%;
@@ -134,10 +77,12 @@ body {
   transition: opacity 300ms ease-out;
 }
 
+/* Increase the opacity of the pseudo-element for headings on hover */
 [data-theme="dark"] .preview-markdown :is(h1, h2, h3, h4, h5, h6)::before {
   opacity: 0.05;
 }
 
+/* Increase the opacity of the pseudo-element for headings on hover */
 .preview-markdown :is(h1, h2, h3, h4, h5, h6):hover::before {
   transition-delay: 100ms;
   opacity: 1;
@@ -160,4 +105,72 @@ body {
 }
 .preview-markdown :is(h6)::before {
   content: "######";
+}
+
+.preview-markdown :is(ol, ul, menu) {
+  margin-inline-start: 1rem;
+}
+
+.preview-markdown ul li {
+  list-style-type: disc;
+}
+
+.preview-markdown ol li {
+  list-style-type: decimal;
+}
+
+/* text-overflow: ellipsis; */
+/* white-space: pre-wrap; */
+/* word-wrap: break-word; */
+
+/* Styles for <pre> element */
+.preview-markdown pre {
+  background-color: var(--chakra-colors-gray-700);
+  border-radius: 5px;
+  padding: 1rem;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+/* Styles for <code> element inside <pre> */
+.preview-markdown pre code {
+  font-size: var(--chakra-fontSizes-xs);
+  font-family: var(--chakra-fonts-code);
+}
+
+/* Styles for <code> element outside <pre> */
+.preview-markdown :not(pre) > code {
+  font-size: var(--chakra-fontSizes-xs);
+  background-color: var(--chakra-colors-gray-700);
+  font-family: var(--chakra-fonts-code);
+  overflow-wrap: break-word;
+  padding-inline: 0.5ch;
+  margin-inline: 0.2ch;
+  border-radius: 3px;
+}
+
+/* Styles for <blockquote> element */
+.preview-markdown blockquote {
+  padding: 1rem;
+  border-inline-start: 4px solid var(--chakra-colors-orange-400);
+  background-color: var(--chakra-colors-gray-100);
+  margin-bottom: 1rem;
+  border-radius: 2px;
+}
+
+/* Styles for children of <blockquote> element */
+.preview-markdown blockquote > :is(p, span) {
+  font-size: var(--chakra-fontSizes-sm);
+  font-weight: bold;
+}
+
+/* Dark mode styles for <blockquote> element */
+[data-theme="dark"] .preview-markdown blockquote {
+  background-color: var(--chakra-colors-gray-800);
+}
+
+/* Styles for last child of <blockquote> element */
+.preview-markdown blockquote > *:last-child {
+  margin-block: 0;
 }

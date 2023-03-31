@@ -81,6 +81,7 @@ export default function MarkdownBody() {
         p="4"
         // ms="px"
         fontFamily="monospace"
+        className="markdown-editor"
         placeholder="Markdown is awesome!!"
         fontSize={["xs", "xs"]}
       />

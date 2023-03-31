@@ -10,6 +10,7 @@ export default function Markdown() {
   return (
     <Box
       id="markdown"
+      className="markdown-editor"
       borderInlineEndWidth="thin"
       borderInlineEndColor="blackAlpha.200"
       _dark={{ borderInlineEndColor: "whiteAlpha.500" }}

@@ -17,6 +17,12 @@ const styles = {
       fontFamily: "body",
       lineHeight: "base",
     },
+    ".preview-markdown :where(h1,h2,h3,h4,h5,h6)": {
+      fontFamily: "var(--chakra-fonts-heading)",
+    },
+    ".markdown-editor textarea":{
+      fontFamily: "var(--chakra-fonts-code)",
+    },
     "*::placeholder": {
       color: mode("gray.400", "whiteAlpha.400")(props),
     },
@@ -24,7 +30,6 @@ const styles = {
       borderColor: mode("gray.200", "whiteAlpha.300")(props),
       wordWrap: "break-word",
     },
-
     "html, body": {
       bg: props.colorMode === "dark" ? "gray.900" : "gray.50",
       color: props.colorMode === "dark" ? "gray.50" : "gray.600",

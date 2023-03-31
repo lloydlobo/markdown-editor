@@ -50,11 +50,16 @@ body {
   list-style-type: decimal;
 }
 
+/* https://chakra-ui.com/docs/styled-system/css-variables */
 /* TODO: Move all to style with chakra-ui in @/lib/theme.ts */
 .preview-markdown blockquote {
   padding: 1rem;
-  border-inline-start: 4px solid orange;
+  border-inline-start: 4px solid var(--chakra-colors-orange-400);
+  background-color: var(--chakra-colors-gray-100);
   margin-bottom: 1rem;
+}
+[data-theme="dark"] .preview-markdown blockquote {
+  background-color: var(--chakra-colors-gray-800);
 }
 
 .preview-markdown blockquote > *:last-child {
@@ -64,4 +69,48 @@ body {
 .preview-markdown ol li::marker,
 .preview-markdown menu li::marker {
   color: rgb(228 102 67);
+}
+
+.preview-markdown :where(h1, h2, h3, h4, h5, h6) {
+  position: relative;
+}
+
+.preview-markdown :is(h1, h2, h3, h4, h5, h6)::before {
+  position: absolute;
+  font-size: 75%;
+  bottom: 1/2;
+  right: 0;
+  opacity: 0.1;
+  transition-property: opacity;
+  transition-delay: 300ms;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+}
+
+[data-theme="dark"] .preview-markdown :is(h1, h2, h3, h4, h5, h6)::before {
+  opacity: 0.05;
+}
+
+.preview-markdown :is(h1, h2, h3, h4, h5, h6):hover::before {
+  transition-delay: 100ms;
+  opacity: 1;
+}
+
+.preview-markdown :is(h1)::before {
+  content: "#";
+}
+.preview-markdown :is(h2)::before {
+  content: "##";
+}
+.preview-markdown :is(h3)::before {
+  content: "###";
+}
+.preview-markdown :is(h4)::before {
+  content: "####";
+}
+.preview-markdown :is(h5)::before {
+  content: "#####";
+}
+.preview-markdown :is(h6)::before {
+  content: "######";
 }

@@ -34,12 +34,13 @@ export default function PreviewBody() {
 
   return (
     <Box
-      overflowY={"auto"}
       maxWidth={{ md: isPreview ? "100vw" : "" }}
       marginInline={{ md: isPreview ? "auto" : "" }}
       p="4"
     >
-      <Stack>
+      <Stack 
+
+      >
         <ReactMarkdown className="preview-markdown">
           {activeNote?.content ? activeNote.content : ""}
         </ReactMarkdown>

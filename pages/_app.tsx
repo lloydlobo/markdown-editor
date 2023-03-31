@@ -15,10 +15,10 @@ export default function App({ Component, pageProps }: AppProps) {
         theme={updateTheme}
         toastOptions={{
           defaultOptions: {
-            position: 'bottom', 
+            position: "bottom",
             duration: 3000,
             isClosable: true,
-          }
+          },
         }}
       >
         <AppContextProvider>
@@ -28,7 +28,6 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
 
 // Google fonts with NextJS need to be loaded in a tsx file here.
 const roboto = Roboto({ weight: ["300", "400"], subsets: ["latin"] });
@@ -43,4 +42,11 @@ const fonts = {
   body: roboto.style.fontFamily,
   code: robotoMono.style.fontFamily,
 };
-const updateTheme = extendTheme({ ...theme, fonts: fonts });
+const updateTheme = extendTheme({
+  ...theme,
+  fonts: fonts,
+
+  // global: (props: Record<string, any>) => ({
+  //   ...global,
+  // }),
+});

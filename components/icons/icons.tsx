@@ -7,9 +7,6 @@ function MarkdownIcon(props: IconProps) {
   return (
     <svg
       {...props}
-      // width="17"
-      // height="17"
-      // viewBox="0 0 24 24"
       strokeWidth={1.5}
       height="128"
       width="208"

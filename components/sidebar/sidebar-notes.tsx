@@ -8,20 +8,22 @@ interface Props { }
 
 export default function SidebarNotes({ }: Props) {
   const { state, dispatch } = useContext(AppContext);
-  const { notes } = state;
+  // const { notes } = state; // Not using notes directly, as it may not be directly using context.
 
   return (
     <List spacing={{ base: "1", md: "2" }}>
-      {notes !== null ? (
-        notes.map((note: INote, idxNote: number) => (
-          <SidebarNote
-            key={`note-${note.title}-${idxNote}-${note.nanoid}`}
-            nanoid={note.nanoid}
-            createdAt={note.createdAt}
-            title={note.title}
-            id={note.id}
-          />
-        ))
+      {state && state?.notes !== null ? (
+        state?.notes.map((note, idxNote: number) =>
+          note !== null ? (
+            <SidebarNote
+              key={`note-${note.title}-${idxNote}-${note.nanoid}`}
+              nanoid={note.nanoid}
+              createdAt={note.createdAt}
+              title={note.title}
+              id={note.id}
+            />
+          ) : null
+        )
       ) : (
         <Box opacity="0.6">Empty notes</Box>
       )}

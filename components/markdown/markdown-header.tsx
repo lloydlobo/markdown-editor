@@ -38,20 +38,16 @@ export default function MarkdownHeader() {
               )
             }
             onClick={handleOnClickToggleCodemirror}
-            // opacity={{ md: 0 }}
             variant="link"
             size="sm"
-            // pointerEvents={{ md: "none" }}
             aria-label="Toggle codemirror editor"
           />
           <IconButton
             icon={<ViewIcon />}
             onClick={handleOnClickTogglePreview}
-            // opacity={{ md: 0 }}
             variant="link"
             size="sm"
             display={{ md: "none" }}
-            // pointerEvents={{ md: "none" }}
             aria-label="Toggle markdown preview"
           />
         </Flex>

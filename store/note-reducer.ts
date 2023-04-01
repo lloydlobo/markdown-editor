@@ -3,15 +3,14 @@ import { IAction, IAppState } from "@/store/types";
 import { INote } from "@/types/inote";
 
 export function noteReducer(state: IAppState, action: IAction): IAppState {
-  console.log(`noteReducer called: ${action.type}`);
+  if (process.env.NODE_ENV === "development") {
+    console.log(`development:`, `noteReducer called: ${action.type}`);
+  }
 
   switch (action.type) {
-    // return { ...state, notes: state?.notes };
     case ActionType.FETCH_NOTES: {
       const payload = action?.payload;
-      // console.log(payload, typeof payload, typeof state.notes, state.notes);
       if (typeof payload === typeof state.notes) {
-        console.log("FETCH_NOTES:", payload, state.notes);
         return { ...state, notes: payload as Array<INote> };
       }
     }
@@ -95,11 +94,9 @@ export function noteReducer(state: IAppState, action: IAction): IAppState {
       }
     }
     case ActionType.TOGGLE_PREVIEW: {
-      console.log({ isPreview: state.isPreview });
       return { ...state, isPreview: !state.isPreview };
     }
     case ActionType.TOGGLE_CODEMIRROR: {
-      console.log({ isCodemirror: state.isCodemirror });
       return { ...state, isCodemirror: !state.isCodemirror };
     }
     default:

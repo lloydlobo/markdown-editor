@@ -20,6 +20,9 @@ body {
   padding: 0;
   margin: 0;
   opacity: 0;
+
+  /* The buttons are still focussable with vimium extension */
+  pointer-events: none;
 }
 
 .menu-closed .wrapper {
@@ -146,7 +149,7 @@ body {
   border-radius: 3px;
 }
 
-[data-theme="dark"] .preview-markdown :not(pre) > code  {
+[data-theme="dark"] .preview-markdown :not(pre) > code {
   background-color: var(--chakra-colors-gray-700);
 }
 

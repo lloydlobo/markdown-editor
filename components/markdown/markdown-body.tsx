@@ -1,30 +1,27 @@
 import { ActionType, AppContext } from "@/store/AppContext";
 import {
-  Text,
   Box,
   Button,
-  IconButton,
-  chakra,
   VisuallyHidden,
   Textarea,
   Center,
   AbsoluteCenter,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import React, { useContext, useState } from "react";
-import {
-  CopyIcon,
-  PlusSquareIcon,
-  ViewIcon,
-  ViewOffIcon,
-} from "@chakra-ui/icons";
+import React, { useContext } from "react";
+import { PlusSquareIcon } from "@chakra-ui/icons";
 import { INote } from "@/types/inote";
 import { nanoid } from "nanoid";
 import { getTimestamp } from "@/utils/get-timestamp";
 import { mode } from "@chakra-ui/theme-tools";
 
+import CodeMirror from "@uiw/react-codemirror";
+import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+import { languages } from "@codemirror/language-data";
+
 export default function MarkdownBody() {
   const { state, dispatch } = useContext(AppContext);
-  const { activeNote, notes } = state;
+  const { activeNote, isCodemirror } = state;
 
   const addNewNote = () => {
     const newNote: INote = {
@@ -61,37 +58,64 @@ export default function MarkdownBody() {
     });
   };
 
+  const onChange = React.useCallback((value: string, viewUpdate: any) => {
+    // console.log("value:", value);
+    if (!activeNote) {
+      return;
+    }
+    dispatch({
+      type: ActionType.UPDATE_MARKDOWN,
+      note: { ...activeNote, content: value },
+    });
+  }, []);
+
   return (
     <>
       <VisuallyHidden>
         <label htmlFor="markdownEditor">Markdown editor</label>
       </VisuallyHidden>
-      <Textarea
-        id="markdownEditor"
-        boxSize={"full"}
-        data-testid="markdownArea"
-        _hover={{
-          borderColor: mode("gray.200", "gray.50"),
-          // borderTopColor: "transparent !important",
-        }}
-        _focusVisible={{
-          borderColor: mode("orange.200", "orange.100"),
-          // borderTopColor: "transparent !important",
-        }}
-        outlineColor="transparent"
-        borderColor={"transparent"}
-        rounded="none"
-        value={activeNote?.content ? activeNote.content : ""}
-        onChange={updateContent}
-        w="full"
-        p="4"
-        // scrollPaddingBottom={8}
-        // ms="px"
-        fontFamily="monospace"
-        className="markdown-editor"
-        placeholder="Markdown is awesome!!"
-        fontSize={["xs", "xs"]}
-      />
+      {isCodemirror ? (
+        <Box
+          fontFamily={"var(--chakra-fonts-code)"}
+          maxW={{ base: "100vw", md: "50vw" }}
+        >
+          <CodeMirror
+            className="markdown-codemirror"
+            id="markdownCodemirror"
+            data-testid="markdownCodemirror"
+            placeholder="Markdown is awesome!!"
+            height="calc(100vh - 80px)"
+            theme={useColorModeValue("light", "dark")}
+            value={activeNote?.content ? activeNote.content : ""}
+            onChange={onChange}
+            extensions={[
+              markdown({
+                base: markdownLanguage,
+                codeLanguages: languages,
+              }),
+            ]}
+          />
+        </Box>
+      ) : (
+        <Textarea
+          id="markdownTextarea"
+          className="markdown-editor"
+          data-testid="markdownTextArea"
+          placeholder="Markdown is awesome!!"
+          value={activeNote?.content ? activeNote.content : ""}
+          onChange={updateContent}
+          fontSize={["xs", "xs"]}
+          boxSize={"full"}
+          w="full"
+          p="4"
+          height="calc(100vh - 80px)"
+          rounded="none"
+          borderColor="transparent"
+          outlineColor="transparent"
+          _hover={{ borderColor: mode("gray.200", "gray.50") }}
+          _focusVisible={{ borderColor: mode("orange.200", "orange.100") }}
+        />
+      )}
     </>
   );
 }

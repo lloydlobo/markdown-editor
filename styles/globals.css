@@ -142,6 +142,7 @@ body {
     max-width: 75vw;
   }
 }
+
 /* Styles for <code> element inside <pre> */
 .preview-markdown pre code {
   font-size: var(--chakra-fontSizes-xs);
@@ -215,4 +216,9 @@ body {
 
 [data-theme="dark"] .preview-markdown table thead {
   border-bottom-color: var(--chakra-colors-gray-800);
+}
+
+.markdown .cm-editor {
+  font-size: var(--chakra-fontSizes-xs);
+  font-family: var(--chakra-fonts-code) !important;
 }

@@ -24,6 +24,7 @@ import { AppContextProviderProps, IAppContext, IAppState } from "./types";
 export enum ActionType {
   SET_ACTIVE_NOTE = "SET_ACTIVE_NOTE",
   TOGGLE_PREVIEW = "TOGGLE_PREVIEW",
+  TOGGLE_CODEMIRROR = "TOGGLE_CODEMIRROR",
   SAVE_CHANGES = "SAVE_CHANGES",
   UPDATE_NOTE_NAME = "UPDATE_NOTE_NAME",
   ADD_NOTE = "ADD_NOTE",
@@ -42,7 +43,8 @@ const initialState: IAppState = {
   selectedNotes: null as Array<INote> | null,
   unsavedData: false,
   isPreview: false,
-}
+  isCodemirror: false,
+};
 
 const AppContext = React.createContext<IAppContext>({
   state: {
@@ -51,6 +53,7 @@ const AppContext = React.createContext<IAppContext>({
     selectedNotes: null as Array<INote> | null,
     unsavedData: false,
     isPreview: false,
+    isCodemirror: false,
   },
   dispatch: () => { },
 });

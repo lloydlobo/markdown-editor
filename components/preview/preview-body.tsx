@@ -1,7 +1,12 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ActionType, AppContext } from "@/store/AppContext";
 import React, { useContext, useState } from "react";
-import { Box, Button, Stack } from "@chakra-ui/react";
+import {
+  Box, Button, Stack,
+
+  Center,
+  AbsoluteCenter,
+} from "@chakra-ui/react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import { INote } from "@/types/inote";
 import { nanoid } from "nanoid";
@@ -24,11 +29,15 @@ export default function PreviewBody() {
 
   if (!activeNote) {
     return (
-      <Box>
-        <Button leftIcon={<PlusSquareIcon />} onClick={addNewNote}>
-          Create new
-        </Button>
-      </Box>
+
+      <Center pos="relative" h="full">
+        <AbsoluteCenter>
+          <Box>
+            <Button leftIcon={<PlusSquareIcon />} onClick={addNewNote}>
+              Create new
+            </Button>
+          </Box>
+        </AbsoluteCenter></Center>
     );
   }
 

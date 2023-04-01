@@ -1,7 +1,7 @@
 import Editor from "@/components/editor/editor";
 import Navbar from "@/components/navbar/navbar";
 import Sidebar from "@/components/sidebar/sidebar";
-import { AppContext } from "@/store/AppContext";
+import { ActionType, AppContext } from "@/store/AppContext";
 import {
   chakra,
   Box,
@@ -19,7 +19,7 @@ export default function Home() {
   // Fetch notes from local storage and dispatches them to the store, 
   // or loads sample data if none exist in local storage. 
   // It also displays a user toast message accordingly.
-  useLocalStorage({ dispatch: dispatch, toast: toast });
+  useLocalStorage({ state: state, dispatch: dispatch, toast: toast });
 
   return (
     <Grid className={`wrapper ${isPreview ? "preview-open" : "preview-closed"}`} >

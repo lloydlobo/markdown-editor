@@ -2,15 +2,13 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ActionType, AppContext } from "@/store/AppContext";
 import React, { useContext, useState } from "react";
 import {
-  Box, Button, Stack,
-
-  Center,
-  AbsoluteCenter,
+  Box, Button, Stack,  Center, AbsoluteCenter, 
 } from "@chakra-ui/react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import { INote } from "@/types/inote";
 import { nanoid } from "nanoid";
 import { getTimestamp } from "@/utils/get-timestamp";
+import { CustomLink } from "@/components/common/custom-link";
 
 export default function PreviewBody() {
   const { state, dispatch } = useContext(AppContext);
@@ -50,10 +48,16 @@ export default function PreviewBody() {
       p="6"
     >
       <Stack pb="12" >
-        <ReactMarkdown>
+        <ReactMarkdown
+          components={{
+            a: CustomLink,
+          }}
+
+        >
           {activeNote?.content ? activeNote.content : ""}
         </ReactMarkdown>
       </Stack>
     </Box>
   );
 }
+

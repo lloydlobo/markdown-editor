@@ -5,6 +5,6 @@ const nextConfig = {
   // env: {
   //   NODE_ENV: "development",
   // },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

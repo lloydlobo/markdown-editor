@@ -23,7 +23,7 @@ export default function MarkdownBody() {
   const { state, dispatch } = useContext(AppContext);
   const { activeNote, isCodemirror } = state;
 
-  const addNewNote = () => {
+  function addNewNote() {
     const newNote: INote = {
       id: state.notes ? state.notes?.length + 1 : -1,
       nanoid: nanoid(),
@@ -32,7 +32,30 @@ export default function MarkdownBody() {
       createdAt: getTimestamp(),
     };
     dispatch({ type: ActionType.ADD_NOTE, note: newNote });
-  };
+  }
+
+  const onChangeCodemirror = React.useCallback(
+    (value: string, viewUpdate: any) => {
+      let active = activeNote;
+      if (active) {
+        dispatch({
+          type: ActionType.UPDATE_MARKDOWN,
+          note: { ...active, content: value },
+        });
+      }
+    },
+    [activeNote, dispatch]
+  );
+
+  function onChangeTextarea(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    let active = activeNote;
+    if (active) {
+      dispatch({
+        type: ActionType.UPDATE_MARKDOWN,
+        note: { ...active, content: e.target.value },
+      });
+    }
+  }
 
   if (!activeNote) {
     return (
@@ -47,25 +70,6 @@ export default function MarkdownBody() {
       </Center>
     );
   }
-
-  const updateContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (!activeNote) {
-      return;
-    }
-    dispatch({
-      type: ActionType.UPDATE_MARKDOWN,
-      note: { ...activeNote, content: e.target.value },
-    });
-  };
-
-  const onChange = React.useCallback((value: string, viewUpdate: any) => {
-    // if (!activeNote) { return; }
-
-    dispatch({
-      type: ActionType.UPDATE_MARKDOWN,
-      note: { ...activeNote, content: value },
-    });
-  }, []);
 
   return (
     <>
@@ -85,7 +89,7 @@ export default function MarkdownBody() {
             height="calc(100vh - 80px)"
             theme={useColorModeValue("light", "dark")}
             value={activeNote?.content ? activeNote.content : ""}
-            onChange={onChange}
+            onChange={onChangeCodemirror}
             extensions={[
               markdown({
                 base: markdownLanguage,
@@ -101,7 +105,7 @@ export default function MarkdownBody() {
           data-testid="markdownTextArea"
           placeholder="Markdown is awesome!!"
           value={activeNote?.content ? activeNote.content : ""}
-          onChange={updateContent}
+          onChange={onChangeTextarea}
           fontSize={["xs", "xs"]}
           boxSize={"full"}
           w="full"

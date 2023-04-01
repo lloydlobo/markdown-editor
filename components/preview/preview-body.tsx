@@ -1,6 +1,13 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ActionType, AppContext } from "@/store/AppContext";
 import React, { useContext, useState } from "react";
+import { useColorMode, useColorModeValue } from "@chakra-ui/system";
+
+
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import oneDark from "react-syntax-highlighter/dist/cjs/styles/prism/one-dark";
+import oneLight from "react-syntax-highlighter/dist/cjs/styles/prism/one-light";
+
 import {
   Box,
   Button,
@@ -20,6 +27,8 @@ import { mode } from "@chakra-ui/theme-tools";
 export default function PreviewBody() {
   const { state, dispatch } = useContext(AppContext);
   const { activeNote, isPreview } = state;
+
+  const syntaxStyleTheme = useColorModeValue(oneLight, oneDark);
 
   const addNewNote = () => {
     const newNote: INote = {
@@ -50,8 +59,8 @@ export default function PreviewBody() {
     <Box
       className="preview-markdown"
       w="full"
-      maxWidth={{ md: isPreview ? "100vw" : "" }}
-      marginInline={{ md: isPreview ? "auto" : "" }}
+      maxWidth={{ md: isPreview ? "75vw" : "50vw" }}
+      marginInline={{ md: isPreview ? "auto" : "auto" }}
       p="6"
     >
       <Stack pb="12">
@@ -59,8 +68,37 @@ export default function PreviewBody() {
           remarkPlugins={[remarkGfm]} // remark plugin to support GFM (autolink literals, footnotes, strikethrough, tables, tasklists).
           components={{
             a: CustomLink,
-            // table: ({ ...otherProps }) => <Box boxShadow="md"><Table variant="simple" {...otherProps}/></Box>,
+            code({ node, inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || "");
+              if (typeof props !== undefined) {
+                return !inline && match ? (
+                  <SyntaxHighlighter
+                    children={String(children).replace(/\n$/, "")}
+                    {...props}
+                    style={syntaxStyleTheme}
+                    language={match[1]}
+                    PreTag="div"
+                  />
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              }
+              return !inline && match ? (
+                <SyntaxHighlighter
+                  children={String(children).replace(/\n$/, "")}
+                  language={match[1]}
+                  PreTag="div"
+                />
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            },
           }}
+
         >
           {activeNote?.content ? activeNote.content : ""}
         </ReactMarkdown>

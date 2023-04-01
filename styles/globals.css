@@ -115,31 +115,43 @@ body {
   list-style-type: decimal;
 }
 
-/* text-overflow: ellipsis; */
-/* white-space: pre-wrap; */
-/* word-wrap: break-word; */
+/* Styles for <pre> element */
+/* .preview-markdown pre { */
+/*   background-color: var(--chakra-colors-blackAlpha-100); */
+/*   border-radius: 5px; */
+/*   padding: 1rem; */
+/*   overflow-x: scroll; */
+/*   scroll-behavior: smooth; */
+/*   scrollbar-width: thin; */
+/* } */
+
+/* [data-theme="dark"] .preview-markdown pre { */
+/*   background-color: var(--chakra-colors-gray-700); */
+/* } */
 
 /* Styles for <pre> element */
 .preview-markdown pre {
-  background-color: var(--chakra-colors-blackAlpha-100);
-  border-radius: 5px;
-  padding: 1rem;
   overflow-x: scroll;
   scroll-behavior: smooth;
   scrollbar-width: thin;
+  max-width: 90vw;
 }
 
-[data-theme="dark"] .preview-markdown pre {
-  background-color: var(--chakra-colors-gray-700);
+@media screen and (min-width: 768px) {
+  .preview-markdown pre {
+    max-width: 75vw;
+  }
 }
-
 /* Styles for <code> element inside <pre> */
 .preview-markdown pre code {
   font-size: var(--chakra-fontSizes-xs);
   font-family: var(--chakra-fonts-code);
+  /* overflow-x: scroll; */
+  /* scroll-behavior: smooth; */
+  /* scrollbar-width: thin; */
 }
 
-/* Styles for <code> element outside <pre> */
+/* Styles for <code > element outside <pre >  */
 .preview-markdown :not(pre) > code {
   font-size: var(--chakra-fontSizes-xs);
   background-color: var(--chakra-colors-blackAlpha-200);
@@ -197,7 +209,7 @@ body {
 
 /* Styles for table head row */
 .preview-markdown table thead {
-  border-bottom: 1px solid ;
+  border-bottom: 1px solid;
   border-bottom-color: var(--chakra-colors-gray-100);
 }
 

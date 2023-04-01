@@ -40,11 +40,11 @@ export const ButtonOrange = forwardRef<ButtonOrangeProps, As<any>>(
     /**
      * Handles the click event on the button.
      */
-    const handleOnClick = () => {
-      if (onClick) {
+    function handleOnClick() {
+      if (typeof onClick !== 'undefined') {
         onClick();
       }
-    };
+    }
 
     return (
       <Tooltip label={tooltipLabel}>

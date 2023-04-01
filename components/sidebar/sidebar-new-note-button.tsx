@@ -23,10 +23,10 @@ export default function SidebarNewNoteButton() {
 
   return (
     <ButtonOrange
+      onClick={addNewNote}
       props={{
         w: "full",
         leftIcon: <PlusSquareIcon />,
-        onClick: addNewNote,
       }}
     >
       Create new

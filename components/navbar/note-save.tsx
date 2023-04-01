@@ -20,12 +20,12 @@ export default function NoteSave() {
       return;
     }
 
-    if (activeNote.content.trim().length === 0){
-    toast({
-      title: "Nothing to save",
-      status: "info",
-    });
-    return;
+    if (activeNote.content.trim().length === 0) {
+      toast({
+        title: "Nothing to save",
+        status: "info",
+      });
+      return;
 
     }
 

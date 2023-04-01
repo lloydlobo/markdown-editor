@@ -16,8 +16,8 @@ export default function Home() {
   const { state, dispatch } = useContext(AppContext);
   const { isPreview } = state;
 
-  // Fetch notes from local storage and dispatches them to the store, 
-  // or loads sample data if none exist in local storage. 
+  // Fetch notes from local storage and dispatches them to the store,
+  // or loads sample data if none exist in local storage.
   // It also displays a user toast message accordingly.
   useLocalStorage({ state: state, dispatch: dispatch, toast: toast });
 

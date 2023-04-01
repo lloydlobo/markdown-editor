@@ -16,7 +16,7 @@ type UseLocalStorageProps = {
 }
 
 /**
- * `useLocalStorage` hook fetches notes from local storage 
+ * `useLocalStorage` hook fetches notes from local storage
  * and dispatches them to the store, or loads sample data if none exist in local storage.
  * It also displays a user message accordingly.
  *
@@ -39,7 +39,7 @@ export function useLocalStorage({ dispatch, toast }: UseLocalStorageProps) {
 
       toast({ title: "Local storage notes found", status: "info", });
     } else {
-      // If notes don't exist in local storage, dispatch sample data to store, 
+      // If notes don't exist in local storage, dispatch sample data to store,
       // and save it to local storage, show user message.
       const sampleData = data;
 

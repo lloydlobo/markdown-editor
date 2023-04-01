@@ -55,37 +55,35 @@ export default function PreviewBody() {
     <Box
       className="preview-markdown"
       w="full"
-      maxWidth={{ md: isPreview ? '75vw' : '50vw' }}
+      maxWidth={{ md: isPreview ? '70ch' : '50vw' }}
       marginInline={{ md: 'auto' }}
-      p="6"
+      p={{ base: "4", md: "6" }}
     >
-      <Stack pb="12">
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]} // remark plugin to support GFM (autolink literals, footnotes, strikethrough, tables, tasklists).
-          components={{
-            a: CustomLink,
-            code({ node, inline, className, children, ...props }) {
-              const match = /language-(\w+)/.exec(className || '');
-              return !inline && match ? (
-                <SyntaxHighlighter
-                  {...props}
-                  style={syntaxStyleTheme}
-                  language={match[1]}
-                  PreTag="div"
-                >
-                  {String(children).replace(/\n$/, '')}
-                </SyntaxHighlighter>
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            },
-          }}
-        >
-          {activeNote?.content || ''}
-        </ReactMarkdown>
-      </Stack>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]} // remark plugin to support GFM (autolink literals, footnotes, strikethrough, tables, tasklists).
+        components={{
+          a: CustomLink,
+          code({ node, inline, className, children, ...props }) {
+            const match = /language-(\w+)/.exec(className || '');
+            return !inline && match ? (
+              <SyntaxHighlighter
+                {...props}
+                style={syntaxStyleTheme}
+                language={match[1]}
+                PreTag="div"
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            );
+          },
+        }}
+      >
+        {activeNote?.content || ''}
+      </ReactMarkdown>
     </Box>
   );
 }

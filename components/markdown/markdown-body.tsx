@@ -28,9 +28,12 @@ export default function MarkdownBody() {
   const [theme, setTheme] = useState(colorMode);
 
   useEffect(() => {
-    const { colorMode } = useColorMode();
-    setTheme(colorMode);
-  });
+    if (colorMode === "light") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+  }, [colorMode, setTheme]);
 
   function addNewNote() {
     const newNote: INote = {

@@ -29,8 +29,8 @@ export function localStoreRemoveItem(key: string): void {
   localStorage.removeItem(key);
 }
 
-/** 
-* Clears all items from local storage. 
+/**
+* Clears all items from local storage.
 */
 export function localStoreClear(): void {
   localStorage.clear();

@@ -2,7 +2,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ActionType, AppContext } from "@/store/AppContext";
 import React, { useContext, useState } from "react";
 import {
-  Box, Button, Stack,  Center, AbsoluteCenter, 
+  Box, Button, Stack,  Center, AbsoluteCenter,
 } from "@chakra-ui/react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import { INote } from "@/types/inote";
@@ -60,4 +60,3 @@ export default function PreviewBody() {
     </Box>
   );
 }
-

@@ -18,6 +18,7 @@ specifiers:
   '@types/react-dom': 18.0.11
   '@types/react-syntax-highlighter': ^15.5.6
   '@uiw/react-codemirror': ^4.19.11
+  dotenv: ^16.0.3
   eslint: 8.37.0
   eslint-config-next: 13.2.4
   framer-motion: ^10.9.2
@@ -48,6 +49,7 @@ dependencies:
   '@types/react-dom': 18.0.11
   '@types/react-syntax-highlighter': 15.5.6
   '@uiw/react-codemirror': 4.19.11_jchwr5foexsvsxffdlbbjsauli
+  dotenv: 16.0.3
   eslint: 8.37.0
   eslint-config-next: 13.2.4_ip5up2nocltd47wbnuyybe5dxu
   framer-motion: 10.9.2_biqbaboplfbrettd7655fr4n2y
@@ -2520,6 +2522,11 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+    dev: false
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /emoji-regex/9.2.2:

@@ -7,8 +7,9 @@ import {
   Center,
   AbsoluteCenter,
   useColorModeValue,
+  useColorMode,
 } from "@chakra-ui/react";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import { INote } from "@/types/inote";
 import { nanoid } from "nanoid";
@@ -22,6 +23,14 @@ import { languages } from "@codemirror/language-data";
 export default function MarkdownBody() {
   const { state, dispatch } = useContext(AppContext);
   const { activeNote, isCodemirror } = state;
+
+  const { colorMode } = useColorMode();
+  const [theme, setTheme] = useState(colorMode);
+
+  useEffect(() => {
+    const { colorMode } = useColorMode();
+    setTheme(colorMode);
+  });
 
   function addNewNote() {
     const newNote: INote = {
@@ -87,7 +96,7 @@ export default function MarkdownBody() {
             data-testid="markdownCodemirror"
             placeholder="Markdown is awesome!!"
             height="calc(100vh - 80px)"
-            theme={useColorModeValue("light", "dark")}
+            theme={theme}
             value={activeNote?.content ? activeNote.content : ""}
             onChange={onChangeCodemirror}
             extensions={[

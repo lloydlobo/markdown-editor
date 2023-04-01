@@ -1,6 +1,7 @@
 # Markdown Editor
 
 <!--toc:start-->
+
 - [Markdown Editor](#markdown-editor)
   - [Description](#description)
   - [Overview](#overview)
@@ -11,7 +12,7 @@
   - [Usage](#usage)
   - [Contributing](#contributing)
   - [License](#license)
-<!--toc:end-->
+  <!--toc:end-->
 
 <a href="https://opensource.org/licenses/MIT" target="_new">
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg"
@@ -57,20 +58,20 @@ localStorage API.
 - Tooltip with delay on title and copy markdown button
 - Human-readable note creation dates
 - Keyboard shortcuts for improved
-user experience (future task)
+  user experience (future task)
 
 ### File Structure
 
 The file structure is as follows:
 
 - `components`: Contains all the components used in the app, such as the
-  navbar, sidebar, editor and preview components.  
+  navbar, sidebar, editor and preview components.
 - `hooks`: Contains the useLocalStorage hook for accessing and storing notes locally.
-- `lib`: Contains constants, and the custom Chakra UI theme.  
+- `lib`: Contains constants, and the custom Chakra UI theme.
 - `pages`: Contains the main pages of the app, such as the home page and the API endpoint.
-- `store`: Contains the AppContext and note-reducer used for state management.  
-- `styles`: Contains global CSS styles.  
-- `tests`: Contains utility tests.  
+- `store`: Contains the AppContext and note-reducer used for state management.
+- `styles`: Contains global CSS styles.
+- `tests`: Contains utility tests.
 - `types`: Contains type definitions for the app.
 - `utils`: Contains utility functions for accessing and manipulating data.
 
@@ -91,7 +92,7 @@ usage documentation].
 
 To run the app, clone the repository and run the following commands:
 
-```shell 
+```shell
 npm install npm run dev
 ```
 
@@ -99,40 +100,40 @@ To use this project, follow the steps below:
 
 Clone the repository to your local machine using the command:
 
-```shell 
-git clone <repository-url> 
+```shell
+git clone <repository-url>
 ```
 
 Navigate to the project directory:
 
-```shell 
-cd markdown-editor 
+```shell
+cd markdown-editor
 ```
 
 Install the project dependencies using npm:
 
-```shell 
-npm install 
+```shell
+npm install
 ```
 
 Start the development server:
 
-```shell 
-npm run dev 
+```shell
+npm run dev
 ```
 
 Access the app in your browser at `http://localhost:3000`
 
 You can create a new note by clicking on the "+" icon in the sidebar.
-To edit a note, simply click on its title in the sidebar.  The editor
-section will appear with the note's content.  You can format the note
+To edit a note, simply click on its title in the sidebar. The editor
+section will appear with the note's content. You can format the note
 using Markdown syntax.
 
 The app also provides a copy markdown button for each note, allowing
 you to easily copy its content to your clipboard.
 
 To delete a note, click on the trash icon next to its title in the
-sidebar.  
+sidebar.
 
 ## Contributing
 

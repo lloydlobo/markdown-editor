@@ -25,6 +25,7 @@ body {
   pointer-events: none;
 }
 
+/* Toggle sidebar when menu icon is toggled and give full width to Editor */
 .menu-closed .wrapper {
   grid-template-columns: 0 100vw;
 }
@@ -38,7 +39,7 @@ body {
 
 /* Apply font family, font size, font weight, and text color to paragraphs and list items */
 .preview-markdown :where(p, li) {
-  font-weight: var(--chakra-fontWeights-medium);
+  /* font-weight: var(--chakra-fontWeights-medium); */
   font-size: var(--chakra-fontSizes-sm);
   font-family: var(--chakra-fonts-heading);
 }
@@ -159,14 +160,12 @@ body {
   border-inline-start: 4px solid var(--chakra-colors-orange-400);
   background-color: var(--chakra-colors-blackAlpha-50);
   margin-bottom: 1rem;
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 /* Styles for children of <blockquote> element */
 .preview-markdown blockquote > :is(p, span) {
   font-weight: 100;
-  /* line-height: 1.4; */
-  /* font-size: var(--chakra-fontSizes-sm); */
   color: var(--chakra-colors-gray-600);
 }
 

@@ -35,22 +35,18 @@ export default function PromptDelete({ isOpen, onClose }: PromptDeleteProps) {
       toast({
         title: "Deleted note",
         status: "success",
-        duration: 3000,
-        isClosable: true,
       });
     } else {
       onClose();
       toast({
         title: "Cannot delete unsaved note",
         status: "error",
-        duration: 3000,
-        isClosable: true,
       });
     }
   }
 
   if (activeNote === null) {
-    return <></>;
+    return null;
   }
 
   return (
@@ -62,7 +58,11 @@ export default function PromptDelete({ isOpen, onClose }: PromptDeleteProps) {
         <ModalBody>
           <Box>
             Are you sure you want to permanently delete{" "}
-            <chakra.strong>{activeNote.title}{".md"}</chakra.strong>{"?"}
+            <chakra.strong>
+              {typeof activeNote !== 'undefined' ? activeNote.title : ""}
+              {".md"}
+            </chakra.strong>
+            {"?"}
           </Box>
         </ModalBody>
 

@@ -1,38 +1,166 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Markdown Editor
 
-## Getting Started
+<!--toc:start-->
 
-First, run the development server:
+- [Markdown Editor](#markdown-editor)
+  - [Description](#description)
+  - [Overview](#overview)
+    - [Features](#features)
+    - [File Structure](#file-structure)
+    - [Future](#future)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
+  <!--toc:end-->
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+<a href="https://opensource.org/licenses/MIT" target="_new">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg"
+  alt="License: MIT">
+</a>
+
+## Description
+
+This project uses the React framework, specifically with
+the Next.js library for server-side rendering and routing. It also uses
+the Chakra UI component library for its styling and user interface.
+
+The goal of this project is to provide a simple and intuitive note-taking
+app that allows users to easily create and edit notes in Markdown
+format. The app is designed to be customizable with its light and dark
+themes and provides user-friendly features such as local storage, copy
+markdown button, and human-readable note creation dates.
+
+In addition to the future tasks mentioned, another potential improvement
+could be implementing a syncing feature with cloud storage or other
+devices for seamless note-taking across platforms.
+
+This is a note-taking app that allows users to create and edit notes in
+Markdown format. The app has a sidebar with a list of notes, a navbar,
+and an editor/preview section.
+
+## Overview
+
+The app uses a custom Chakra UI theme and allows users to switch between
+light and dark modes. The notes are stored locally using the browser's
+localStorage API.
+
+### Features
+
+- Sidebar with a list of notes
+- Editor and preview sections for note-taking
+- Custom Chakra UI theme with light and dark mode
+- LocalStorage API for storing notes
+- Ability to create and delete notes
+- Markdown formatting in the editor section
+- Copy markdown button
+- User action messages
+- Tooltip with delay on title and copy markdown button
+- Human-readable note creation dates
+- Keyboard shortcuts for improved
+  user experience (future task)
+
+### File Structure
+
+The file structure is as follows:
+
+- `components`: Contains all the components used in the app, such as the
+  navbar, sidebar, editor and preview components.
+- `hooks`: Contains the useLocalStorage hook for accessing and storing notes locally.
+- `lib`: Contains constants, and the custom Chakra UI theme.
+- `pages`: Contains the main pages of the app, such as the home page and the API endpoint.
+- `store`: Contains the AppContext and note-reducer used for state management.
+- `styles`: Contains global CSS styles.
+- `tests`: Contains utility tests.
+- `types`: Contains type definitions for the app.
+- `utils`: Contains utility functions for accessing and manipulating data.
+
+### Future
+
+Future tasks include implementing a search function and adhering to the
+design's color scheme.
+
+## Installation
+
+To install this project, [insert steps on how to install or link to
+installation documentation].
+
+## Usage
+
+To use this project, [insert instructions on how to use or link to
+usage documentation].
+
+To run the app, clone the repository and run the following commands:
+
+```shell
+npm install npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To use this project, follow the steps below:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Clone the repository to your local machine using the command:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```shell
+git clone <repository-url>
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Navigate to the project directory:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```shell
+cd markdown-editor
+```
 
-## Learn More
+Install the project dependencies using npm:
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Start the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```shell
+npm run dev
+```
 
-## Deploy on Vercel
+Access the app in your browser at `http://localhost:3000`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can create a new note by clicking on the "+" icon in the sidebar.
+To edit a note, simply click on its title in the sidebar. The editor
+section will appear with the note's content. You can format the note
+using Markdown syntax.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The app also provides a copy markdown button for each note, allowing
+you to easily copy its content to your clipboard.
+
+To delete a note, click on the trash icon next to its title in the
+sidebar.
+
+## Contributing
+
+Contributions to this project are welcome. To contribute, please follow
+these steps:
+
+Fork the repository Create a new branch for your feature or bug fix:
+
+```shell
+git checkout -b my-feature-branch
+```
+
+Make your changes and commit them:
+
+```shell
+git commit -m "Added new feature"
+```
+
+Push your changes to your forked repository:
+
+```shell
+git push origin my-feature-branch
+```
+
+Create a pull request against the main repository.
+
+## License
+
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file
+for details.

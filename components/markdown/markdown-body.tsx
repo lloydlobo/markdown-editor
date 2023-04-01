@@ -7,6 +7,8 @@ import {
   chakra,
   VisuallyHidden,
   Textarea,
+  Center,
+  AbsoluteCenter,
 } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
 import {
@@ -37,11 +39,15 @@ export default function MarkdownBody() {
 
   if (!activeNote) {
     return (
-      <Box>
-        <Button leftIcon={<PlusSquareIcon />} onClick={addNewNote}>
-          Create new
-        </Button>
-      </Box>
+      <Center pos="relative" h="full">
+        <AbsoluteCenter>
+          <Box>
+            <Button leftIcon={<PlusSquareIcon />} onClick={addNewNote}>
+              Create new
+            </Button>
+          </Box>
+        </AbsoluteCenter>
+      </Center>
     );
   }
 

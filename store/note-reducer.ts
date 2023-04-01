@@ -1,13 +1,19 @@
 import { ActionType } from "./AppContext";
-import { IAction, IAppState } from "./types";
+import { IAction, IAppState } from "@/store/types";
+import { INote } from "@/types/inote"
 
 export function noteReducer(state: IAppState, action: IAction): IAppState {
   console.log(`noteReducer called: ${action.type}`);
 
   switch (action.type) {
+    // return { ...state, notes: state?.notes };
     case ActionType.FETCH_NOTES: {
-      // return { ...state, notes: state?.notes };
-      return { ...state, notes: action?.payload };
+      const payload = action?.payload;
+      // console.log(payload, typeof payload, typeof state.notes, state.notes);
+      if (typeof payload === typeof state.notes) {
+        console.log("FETCH_NOTES:",payload, state.notes);
+        return { ...state, notes: (payload as Array<INote>) };
+      }
     }
     case ActionType.SET_ACTIVE_NOTE: {
       state.unsavedData = false;
@@ -73,4 +79,5 @@ export function noteReducer(state: IAppState, action: IAction): IAppState {
     default:
       throw Error("noteReducer called: Unknown action: " + action.type);
   }
+
 }

@@ -13,7 +13,8 @@ export default function Markdown() {
       borderInlineEndWidth="thin"
       borderInlineEndColor="blackAlpha.200"
       _dark={{ borderInlineEndColor: "whiteAlpha.500" }}
-      minH="calc(100vh - 80px)"
+      h={"calc(100vh - 80px)"}
+      minH={"calc(100vh - 80px)"}
     >
       <MarkdownHeader />
       <MarkdownBody />

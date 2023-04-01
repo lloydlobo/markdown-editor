@@ -2,13 +2,20 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { ActionType, AppContext } from "@/store/AppContext";
 import React, { useContext, useState } from "react";
 import {
-  Box, Button, Stack,  Center, AbsoluteCenter,
+  Box,
+  Button,
+  Stack,
+  Center,
+  AbsoluteCenter,
+  Table,
 } from "@chakra-ui/react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import { INote } from "@/types/inote";
 import { nanoid } from "nanoid";
 import { getTimestamp } from "@/utils/get-timestamp";
 import { CustomLink } from "@/components/common/custom-link";
+import remarkGfm from "remark-gfm";
+import { mode } from "@chakra-ui/theme-tools";
 
 export default function PreviewBody() {
   const { state, dispatch } = useContext(AppContext);
@@ -27,7 +34,6 @@ export default function PreviewBody() {
 
   if (!activeNote) {
     return (
-
       <Center pos="relative" h="full">
         <AbsoluteCenter>
           <Box>
@@ -35,7 +41,8 @@ export default function PreviewBody() {
               Create new
             </Button>
           </Box>
-        </AbsoluteCenter></Center>
+        </AbsoluteCenter>
+      </Center>
     );
   }
 
@@ -47,12 +54,13 @@ export default function PreviewBody() {
       marginInline={{ md: isPreview ? "auto" : "" }}
       p="6"
     >
-      <Stack pb="12" >
+      <Stack pb="12">
         <ReactMarkdown
+          remarkPlugins={[remarkGfm]} // remark plugin to support GFM (autolink literals, footnotes, strikethrough, tables, tasklists).
           components={{
             a: CustomLink,
+            // table: ({ ...otherProps }) => <Box boxShadow="md"><Table variant="simple" {...otherProps}/></Box>,
           }}
-
         >
           {activeNote?.content ? activeNote.content : ""}
         </ReactMarkdown>

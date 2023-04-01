@@ -59,10 +59,8 @@ export default function MarkdownBody() {
   };
 
   const onChange = React.useCallback((value: string, viewUpdate: any) => {
-    // console.log("value:", value);
-    if (!activeNote) {
-      return;
-    }
+    // if (!activeNote) { return; }
+
     dispatch({
       type: ActionType.UPDATE_MARKDOWN,
       note: { ...activeNote, content: value },

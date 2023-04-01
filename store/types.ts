@@ -7,8 +7,9 @@ export interface IAppState {
   notes: Array<INote> | null;
   activeNote: INote | null;
   selectedNotes: Array<INote> | null;
-  unsavedData: boolean,
-  isPreview: boolean,
+  unsavedData: boolean;
+  isPreview: boolean;
+  isCodemirror: boolean;
 }
 export type IAction = {
   type: ActionType;

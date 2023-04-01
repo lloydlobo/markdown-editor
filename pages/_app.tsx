@@ -27,7 +27,10 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 
 // Google fonts with NextJS need to be loaded in a tsx file here.
-const robotoSlab = Roboto_Slab({ weight: ["200", "400", "500", "700"], subsets: ["latin"], });
+const robotoSlab = Roboto_Slab({
+  weight: ["200", "400", "500", "700"],
+  subsets: ["latin"],
+});
 const roboto = Roboto({ weight: ["300", "400"], subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 

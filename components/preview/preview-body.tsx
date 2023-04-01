@@ -1,62 +1,89 @@
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { ActionType, AppContext } from "@/store/AppContext";
-import React, { useContext, useState } from "react";
-import {
-  Box, Button, Stack,  Center, AbsoluteCenter,
-} from "@chakra-ui/react";
-import { PlusSquareIcon } from "@chakra-ui/icons";
-import { INote } from "@/types/inote";
-import { nanoid } from "nanoid";
-import { getTimestamp } from "@/utils/get-timestamp";
-import { CustomLink } from "@/components/common/custom-link";
+/**
+ * This component renders the preview of a Markdown body.
+ * If there is no active note, it renders a "Create new" button instead.
+ */
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { ActionType, AppContext } from '@/store/AppContext';
+import { useColorModeValue } from '@chakra-ui/system';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import remarkGfm from 'remark-gfm';
+import oneDark from 'react-syntax-highlighter/dist/cjs/styles/prism/one-dark';
+import oneLight from 'react-syntax-highlighter/dist/cjs/styles/prism/one-light';
+import { Box, Button, Center, Stack } from '@chakra-ui/react';
+import { PlusSquareIcon } from '@chakra-ui/icons';
+import { CustomLink } from '@/components/common/custom-link';
+import { getTimestamp } from '@/utils/get-timestamp';
+import { INote } from '@/types/inote';
+import { nanoid } from 'nanoid';
+import React, { useContext } from 'react';
 
 export default function PreviewBody() {
   const { state, dispatch } = useContext(AppContext);
   const { activeNote, isPreview } = state;
 
+  const syntaxStyleTheme = useColorModeValue(oneLight, oneDark);
+  /**
+   * This component renders the preview of a Markdown body.
+   * If there is no active note, it renders a "Create new" button instead.
+   */
   const addNewNote = () => {
     const newNote: INote = {
-      id: state.notes ? state.notes?.length + 1 : -1,
+      id: state.notes ? state.notes.length + 1 : -1,
       nanoid: nanoid(),
-      title: "Untitled",
-      content: "",
+      title: 'Untitled',
+      content: '',
       createdAt: getTimestamp(),
     };
     dispatch({ type: ActionType.ADD_NOTE, note: newNote });
   };
-
+  /**
+   * This component renders the preview of a Markdown body.
+   * If there is no active note, it renders a "Create new" button instead.
+   */
   if (!activeNote) {
     return (
-
       <Center pos="relative" h="full">
-        <AbsoluteCenter>
-          <Box>
-            <Button leftIcon={<PlusSquareIcon />} onClick={addNewNote}>
-              Create new
-            </Button>
-          </Box>
-        </AbsoluteCenter></Center>
+        <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)">
+          <Button leftIcon={<PlusSquareIcon />} onClick={addNewNote}>
+            Create new
+          </Button>
+        </Box>
+      </Center>
     );
   }
-
   return (
     <Box
       className="preview-markdown"
       w="full"
-      maxWidth={{ md: isPreview ? "100vw" : "" }}
-      marginInline={{ md: isPreview ? "auto" : "" }}
-      p="6"
+      maxWidth={{ md: isPreview ? '70ch' : '50vw' }}
+      marginInline={{ md: 'auto' }}
+      p={{ base: "4", md: "6" }}
     >
-      <Stack pb="12" >
-        <ReactMarkdown
-          components={{
-            a: CustomLink,
-          }}
-
-        >
-          {activeNote?.content ? activeNote.content : ""}
-        </ReactMarkdown>
-      </Stack>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]} // remark plugin to support GFM (autolink literals, footnotes, strikethrough, tables, tasklists).
+        components={{
+          a: CustomLink,
+          code({ node, inline, className, children, ...props }) {
+            const match = /language-(\w+)/.exec(className || '');
+            return !inline && match ? (
+              <SyntaxHighlighter
+                {...props}
+                style={syntaxStyleTheme}
+                language={match[1]}
+                PreTag="div"
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            );
+          },
+        }}
+      >
+        {activeNote?.content || ''}
+      </ReactMarkdown>
     </Box>
   );
 }

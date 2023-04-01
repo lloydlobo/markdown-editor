@@ -54,7 +54,7 @@ export function CustomLink({ as, href, ...otherProps }: CustomLinkProps): JSX.El
     isExternal: !isInternalLink,
     textDecoration: "underline",
     textUnderlineOffset: "2px",
-    _hover: { color: useColorModeValue("orange.500", "orange.400") },
+    _hover: { color: useColorModeValue("orange.500", "orange.300") },
     alignItems: "center",
     as,
     href,

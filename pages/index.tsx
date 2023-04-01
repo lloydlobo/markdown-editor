@@ -2,13 +2,8 @@ import Editor from "@/components/editor/editor";
 import Navbar from "@/components/navbar/navbar";
 import Sidebar from "@/components/sidebar/sidebar";
 import { ActionType, AppContext } from "@/store/AppContext";
-import {
-  chakra,
-  Box,
-  Grid,
-  useToast,
-} from "@chakra-ui/react";
-import { useContext, } from "react";
+import { chakra, Box, Grid, useToast } from "@chakra-ui/react";
+import { useContext } from "react";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 
 export default function Home() {
@@ -22,7 +17,9 @@ export default function Home() {
   useLocalStorage({ state: state, dispatch: dispatch, toast: toast });
 
   return (
-    <Grid className={`wrapper ${isPreview ? "preview-open" : "preview-closed"}`} >
+    <Grid
+      className={`wrapper ${isPreview ? "preview-open" : "preview-closed"}`}
+    >
       <Sidebar />
       <Box>
         <Navbar />

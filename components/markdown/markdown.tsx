@@ -15,6 +15,7 @@ export default function Markdown() {
       _dark={{ borderInlineEndColor: "whiteAlpha.500" }}
       h={"calc(100vh - 80px)"}
       minH={"calc(100vh - 80px)"}
+      pb={{ base: 4, md: 6 }}
     >
       <MarkdownHeader />
       <MarkdownBody />

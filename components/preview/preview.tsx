@@ -15,6 +15,7 @@ export default function Preview() {
         minH={"calc(100vh - 80px)"}
         maxW={{ md: "61.8vw" }}
         marginInline="auto"
+        pb={{ base: 4, md: 6 }}
       >
         <PreviewBody />
       </Box>

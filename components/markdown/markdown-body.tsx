@@ -85,6 +85,7 @@ export default function MarkdownBody() {
         onChange={updateContent}
         w="full"
         p="4"
+        // scrollPaddingBottom={8}
         // ms="px"
         fontFamily="monospace"
         className="markdown-editor"

@@ -23,12 +23,7 @@ export default function Home() {
       <Sidebar />
       <Box>
         <Navbar />
-        <chakra.main
-        // Thin border to allow enough space for textarea border on focus in Editor -> Markdown.
-        // borderInlineStart={"thin solid"}
-        // borderInlineStartColor="blackAlpha.100"
-        // _dark={{ borderInlineStartColor: "whiteAlpha.100" }}
-        >
+        <chakra.main>
           <Editor />
         </chakra.main>
       </Box>

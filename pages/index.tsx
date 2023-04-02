@@ -1,9 +1,9 @@
 import Editor from "@/components/editor/editor";
 import Navbar from "@/components/navbar/navbar";
 import Sidebar from "@/components/sidebar/sidebar";
-import { ActionType, AppContext } from "@/store/AppContext";
-import { chakra, Box, Grid, useToast } from "@chakra-ui/react";
 import { useContext } from "react";
+import { AppContext } from "@/store/AppContext";
+import { chakra, Box, Grid, useToast } from "@chakra-ui/react";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 
 export default function Home() {
@@ -24,10 +24,10 @@ export default function Home() {
       <Box>
         <Navbar />
         <chakra.main
-          // Thin border to allow enough space for textarea border on focus in Editor -> Markdown.
-          borderInlineStart={"thin solid"}
-          borderInlineStartColor="blackAlpha.100"
-          _dark={{ borderInlineStartColor: "whiteAlpha.100" }}
+        // Thin border to allow enough space for textarea border on focus in Editor -> Markdown.
+        // borderInlineStart={"thin solid"}
+        // borderInlineStartColor="blackAlpha.100"
+        // _dark={{ borderInlineStartColor: "whiteAlpha.100" }}
         >
           <Editor />
         </chakra.main>

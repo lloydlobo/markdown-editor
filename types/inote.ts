@@ -5,3 +5,9 @@ export interface INote {
   content: string;
   createdAt: string;
 }
+
+export type NavItemProps = {
+  page: string;
+  pathname: string;
+};
+

@@ -25,7 +25,9 @@ export default function SidebarNotes({ }: Props) {
           ) : null
         )
       ) : (
-        <Box opacity="0.6">Empty notes</Box>
+        <Box opacity="0.6" px="6">
+          Empty notes
+        </Box>
       )}
     </List>
   );

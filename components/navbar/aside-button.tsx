@@ -1,5 +1,6 @@
 import {
   AspectRatio,
+  Box,
   Button,
   IconButton,
   VisuallyHidden,
@@ -16,7 +17,7 @@ export default function AsideButton() {
   };
 
   return (
-    <>
+    <Box id="asideButton">
       <VisuallyHidden>
         {isOpenMenu ? "close sidebar menu" : "open sidebar menu"}
       </VisuallyHidden>
@@ -36,6 +37,6 @@ export default function AsideButton() {
           icon={isOpenMenu ? <CloseIcon /> : <HamburgerMenuIcon />}
         />
       </AspectRatio>
-    </>
+    </Box>
   );
 }

@@ -13,7 +13,7 @@ const styles = {
   global: (props: Record<string, any>) => ({
     body: {
       bg: mode("gray.50", "gray.900")(props),
-      color: mode( "gray.600", "gray.50",)(props),
+      color: mode("gray.600", "gray.50")(props),
       fontFamily: "body",
       lineHeight: "base",
     },
@@ -224,6 +224,26 @@ const lineHeights = {
   "8": "2rem",
   "9": "2.25rem",
   "10": "2.5rem",
+};
+
+const semanticTokens = {
+  colors: {
+    text: {
+      default: "#16161D",
+      _dark: "#ade3b8",
+    },
+    heroGradientStart: {
+      default: "#7928CA",
+      _dark: "#e3a7f9",
+    },
+    heroGradientEnd: {
+      default: "#FF0080",
+      _dark: "#fbec8f",
+    },
+  },
+  radii: {
+    button: "12px",
+  },
 };
 
 export const theme = extendTheme({

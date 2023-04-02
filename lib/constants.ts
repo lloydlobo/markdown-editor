@@ -13,4 +13,3 @@ export const navItems: NavItemProps[] = [
     pathname: "/about",
   },
 ];
-

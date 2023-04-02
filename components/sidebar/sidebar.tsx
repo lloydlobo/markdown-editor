@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useRouter } from "next/router";
+
 import {
   Box,
   Text,
@@ -18,7 +20,6 @@ import SidebarNotes from "@/components/sidebar/sidebar-notes";
 import Logo from "@/components/sidebar/sidebar-logo";
 import SidebarNewNoteButton from "@/components/sidebar/sidebar-new-note-button";
 import { SidebarThemeToggle } from "@/components/sidebar/sidebar-theme-toggle";
-import { useRouter } from "next/router";
 import { navItems } from "@/lib/constants";
 
 export default function Sidebar() {

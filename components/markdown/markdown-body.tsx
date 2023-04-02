@@ -8,6 +8,7 @@ import {
   AbsoluteCenter,
   useColorModeValue,
   useColorMode,
+  Stack,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
@@ -18,6 +19,7 @@ import { mode } from "@chakra-ui/theme-tools";
 
 import CodeMirror from "@uiw/react-codemirror";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+import { EditorView, ViewUpdate } from '@codemirror/view';
 import { languages } from "@codemirror/language-data";
 
 export default function MarkdownBody() {
@@ -89,12 +91,17 @@ export default function MarkdownBody() {
         <label htmlFor="markdownEditor">Markdown editor</label>
       </VisuallyHidden>
       {isCodemirror ? (
-        <Box
+        <Stack
           fontFamily={"var(--chakra-fonts-code)"}
           maxW={{ base: "100vw", md: "50vw" }}
         >
           <CodeMirror
             className="markdown-codemirror"
+            autoFocus={true}
+            basicSetup={{
+              lineNumbers: false,
+              autocompletion: true,
+            }}
             id="markdownCodemirror"
             data-testid="markdownCodemirror"
             placeholder="Markdown is awesome!!"
@@ -103,15 +110,17 @@ export default function MarkdownBody() {
             value={activeNote?.content ? activeNote.content : ""}
             onChange={onChangeCodemirror}
             extensions={[
+              EditorView.lineWrapping, // https://discuss.codemirror.net/t/how-to-use-line-wrapping-in-codemirror-6/4924/2
               markdown({
                 base: markdownLanguage,
                 codeLanguages: languages,
               }),
             ]}
           />
-        </Box>
+        </Stack>
       ) : (
         <Textarea
+          autoFocus={true}
           id="markdownTextarea"
           className="markdown-editor"
           data-testid="markdownTextArea"

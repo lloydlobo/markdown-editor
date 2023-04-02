@@ -10,7 +10,6 @@ import {
   Link as ChakraLink,
   Divider,
   ChakraProps,
-  useColorModeValue,
   FlexProps,
   StackProps,
 } from "@chakra-ui/react";
@@ -44,26 +43,24 @@ export default function Sidebar() {
       <Grid gap="6">
         {/* Show notes only if router.pathname is apps index page */}
         {router.pathname === "/" && (
-          <>
-            <Stack spacing="6" my={{ base: 6, md: 6 }}>
-              <Text
-                textTransform="uppercase"
-                fontSize="xs"
-                letterSpacing="widest"
-                opacity="0.7"
-                fontWeight="medium"
-                my="0"
-                px="6"
-                py={{ md: "3" }}
-              >
-                my notes
-              </Text>
-              <Box px="6">
-                <SidebarNewNoteButton />
-              </Box>
-              <SidebarNotes />
-            </Stack>
-          </>
+          <Stack spacing="6" my={{ base: 6, md: 6 }}>
+            <Text
+              textTransform="uppercase"
+              fontSize="xs"
+              letterSpacing="widest"
+              opacity="0.7"
+              fontWeight="medium"
+              my="0"
+              px="6"
+              py={{ md: "3" }}
+            >
+              my notes
+            </Text>
+            <Box px="6">
+              <SidebarNewNoteButton />
+            </Box>
+            <SidebarNotes />
+          </Stack>
         )}
 
         <Stack px="6" pt="6">
@@ -139,7 +136,13 @@ export function NavigationLink({
       {...props}
       color={isActive ? "orange.300" : ""}
       _hover={{
-        color: isActive ? useColorModeValue("orange.500", "orange.400") : "",
+        color: isActive ? "orange.500" : "",
+      }}
+      _dark={{
+        color: isActive ? "orange.400" : "",
+        _hover: {
+          color: isActive ? "orange.500" : "",
+        },
       }}
       letterSpacing="wider"
       fontWeight="medium"

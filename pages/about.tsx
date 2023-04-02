@@ -68,11 +68,11 @@ const LandingPage = () => {
             Overview
           </Heading>
           <Text mb="4">
-            {brandName}'s custom Chakra UI theme offers a visually appealing and
-            modern interface, with a sidebar displaying a list of notes and an
-            editor and preview section for note-taking. The app uses the
-            browser's localStorage API to store notes, enabling users to access
-            their notes even when offline.
+            {brandName}&apos;s custom Chakra UI theme offers a visually
+            appealing and modern interface, with a sidebar displaying a list of
+            notes and an editor and preview section for note-taking. The app
+            uses the browser&apos;s localStorage API to store notes, enabling users
+            to access their notes even when offline.
           </Text>
           <Heading as="h3" size="md" mb="2">
             Features

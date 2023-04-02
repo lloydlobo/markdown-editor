@@ -20,6 +20,12 @@ export default function AboutPage() {
 
   return (
     <>
+      <style jsx global>{`
+    body {
+      // height: auto !important;
+      overflow-y: scroll !important;
+    }
+    `}</style>
       <title>About | Markdown Editor</title>
       <Grid
         className={`wrapper ${isPreview ? "preview-open" : "preview-closed"}`}
@@ -27,7 +33,7 @@ export default function AboutPage() {
         <Sidebar />
         <Box>
           <Navbar />
-          <chakra.main>
+          <chakra.main >
             <LandingPage />
           </chakra.main>
         </Box>
@@ -39,7 +45,8 @@ export default function AboutPage() {
 const LandingPage = () => {
   const brandName = "Markdown Editor";
   return (
-    <Box px={{ base: "4", md: "10" }} py={{ base: "8", md: "16" }}>
+    <Box
+      px={{ base: "4", md: "10" }} py={{ base: "8", md: "16" }}>
       <Flex
         direction={{ base: "column", md: "row" }}
         justify="space-between"

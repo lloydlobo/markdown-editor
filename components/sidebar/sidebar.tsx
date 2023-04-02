@@ -29,7 +29,7 @@ export default function Sidebar() {
     <chakra.aside
       data-testid="sidebar"
       className="sidebar"
-      h="100vh"
+      minH="100vh"
       pos="relative"
       py={{ base: 6, md: 7 }}
       bg="blackAlpha.50"

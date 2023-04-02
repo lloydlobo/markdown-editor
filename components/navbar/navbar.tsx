@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Box, chakra, Grid } from "@chakra-ui/react";
+import { Box, chakra, Grid, Show } from "@chakra-ui/react";
 
 import AsideButton from "@/components/navbar/aside-button";
 import Logo from "@/components/navbar/logo";
@@ -31,14 +31,16 @@ export default function Navbar() {
             pr="2"
             gap="7"
             gridTemplateColumns={{
-              base: "1fr 20px auto",
+              base: "1fr auto",
               md: "auto 1fr 20px 150px",
             }}
             placeContent="center"
             alignItems="center"
             autoFlow="column"
           >
-            <Logo />
+            <Show above="md">
+              <Logo />
+            </Show>
             {/* Show notes only if router.pathname is apps index page */}
             {router.pathname === "/" && (
               <>

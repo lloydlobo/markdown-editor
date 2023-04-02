@@ -222,6 +222,7 @@ body {
   font-size: var(--chakra-fontSizes-xs);
   font-family: var(--chakra-fonts-code) !important;
 }
+
 /* .cm-content { */
 /*   max-width: 50vw; */
 /* } */

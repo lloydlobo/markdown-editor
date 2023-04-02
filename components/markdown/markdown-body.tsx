@@ -94,6 +94,7 @@ export default function MarkdownBody() {
         <Stack
           fontFamily={"var(--chakra-fonts-code)"}
           maxW={{ base: "100vw", md: "50vw" }}
+          pb="12"
         >
           <CodeMirror
             className="markdown-codemirror"
@@ -105,7 +106,7 @@ export default function MarkdownBody() {
             id="markdownCodemirror"
             data-testid="markdownCodemirror"
             placeholder="Markdown is awesome!!"
-            height="calc(100vh - 80px)"
+            height="max(86vh, calc(100vh - 120px))" // Else last line if overflows isn't visible.
             theme={theme}
             value={activeNote?.content ? activeNote.content : ""}
             onChange={onChangeCodemirror}
@@ -131,7 +132,7 @@ export default function MarkdownBody() {
           boxSize={"full"}
           w="full"
           p="4"
-          height="calc(100vh - 80px)"
+          // height={{ base: "calc(100vh - 115px)", md: "calc(100vh - 90px)" }}
           rounded="none"
           borderColor="transparent"
           outlineColor="transparent"

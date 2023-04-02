@@ -225,3 +225,8 @@ body {
 /* .cm-content { */
 /*   max-width: 50vw; */
 /* } */
+
+/* Remove background color from codemirror editor | just use syntax highlighting */
+.ͼo {
+  background-color: transparent;
+}

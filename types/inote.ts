@@ -10,4 +10,3 @@ export type NavItemProps = {
   page: string;
   pathname: string;
 };
-

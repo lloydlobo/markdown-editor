@@ -31,7 +31,7 @@ export default function MarkdownHeader() {
             icon={
               isCodemirror ? (
                 <MarkdownIcon
-                  style={{ width: "17px", height: "17px", fillOpacity: "0.5" }}
+                  style={{ width: "17px", height: "17px", fillOpacity: "0.9" }}
                 />
               ) : (
                 <CodeBracketIcon />

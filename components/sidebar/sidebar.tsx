@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+
+import { useRouter } from "next/router";
 
 import {
   Box,
@@ -18,9 +20,7 @@ import SidebarNotes from "@/components/sidebar/sidebar-notes";
 import Logo from "@/components/sidebar/sidebar-logo";
 import SidebarNewNoteButton from "@/components/sidebar/sidebar-new-note-button";
 import { SidebarThemeToggle } from "@/components/sidebar/sidebar-theme-toggle";
-import { useRouter } from "next/router";
 import { navItems } from "@/lib/constants";
-import { NavItemProps } from "@/types/inote";
 
 export default function Sidebar() {
   const router = useRouter();
@@ -29,7 +29,7 @@ export default function Sidebar() {
     <chakra.aside
       data-testid="sidebar"
       className="sidebar"
-      h="100vh"
+      minH="100vh"
       pos="relative"
       py={{ base: 6, md: 7 }}
       bg="blackAlpha.50"
@@ -64,6 +64,7 @@ export default function Sidebar() {
         )}
 
         <Stack px="6" pt="6">
+          <Divider position="relative" mb="2" w="full" />
           <NavigationLinks />
         </Stack>
       </Grid>
@@ -73,44 +74,21 @@ export default function Sidebar() {
 
 export function NavigationLinks() {
   const router = useRouter();
-  const [navItemsState, setNavItemsState] = useState<NavItemProps[]>(navItems);
-
-  useEffect(() => {
-    setNavItemsState(
-      navItems.map((item) => ({
-        ...item,
-        isActive: item.pathname === router.pathname,
-      }))
-    );
-  }, [router.pathname]);
-
-  function handleLinkClick(pathname: string) {
-    setNavItemsState(
-      navItems.map((item) => ({
-        ...item,
-        isActive: item.pathname === pathname,
-      }))
-    );
-  }
 
   return (
-    <>
-      <Divider position="relative" mb="2" w="full" />
-      <Stack className="nav-items">
-        {navItemsState.map((item, idx) => (
-          <NavigationLink
-            key={`navItem-${item.pathname}-${idx}`}
-            isExternal={false}
-            href={item.pathname}
-            isActive={item.pathname === router.pathname}
-            onClick={() => handleLinkClick(item.pathname)}
-            transition="all 0.15s ease-out"
-          >
-            {item.page}
-          </NavigationLink>
-        ))}
-      </Stack>
-    </>
+    <Stack className="nav-items">
+      {navItems.map((navItem, idxNavItem) => (
+        <NavigationLink
+          key={`navItem-${navItem.pathname}-${idxNavItem}`}
+          isExternal={false}
+          href={navItem.pathname}
+          isActive={navItem.pathname === router.pathname}
+          transition="all 0.15s ease-out"
+        >
+          {navItem.page}
+        </NavigationLink>
+      ))}
+    </Stack>
   );
 }
 
@@ -118,9 +96,8 @@ type NavigationLinkProps = {
   href: string;
   children: React.ReactNode;
   isActive: boolean;
-  onClick: () => void;
   [key: string]: any | ChakraProps | FlexProps | StackProps;
-};
+}; // onClick: () => void;
 
 export function NavigationLink({
   href,
@@ -134,21 +111,22 @@ export function NavigationLink({
       as={ChakraLink}
       href={href}
       {...props}
-      color={isActive ? "orange.300" : ""}
-      _hover={{
-        color: isActive ? "orange.500" : "",
-      }}
-      _dark={{
-        color: isActive ? "orange.400" : "",
-        _hover: {
-          color: isActive ? "orange.500" : "",
-        },
-      }}
       letterSpacing="wider"
       fontWeight="medium"
       fontSize={{ base: "sm", md: "md" }}
       textTransform="capitalize"
-      onClick={onClick}
+      color={isActive ? "orange.500" : ""}
+      _hover={{
+        color: isActive ? "orange.400" : "orange.400",
+        textDecoration: isActive ? "" : "none",
+      }}
+      _dark={{
+        color: isActive ? "orange.400" : "",
+        _hover: {
+          color: isActive ? "orange.500" : "orange.400",
+          textDecoration: isActive ? "" : "none",
+        },
+      }}
     >
       {children}
     </ChakraLink>

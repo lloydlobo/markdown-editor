@@ -8,6 +8,7 @@ import {
   AbsoluteCenter,
   useColorModeValue,
   useColorMode,
+  Stack,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
@@ -18,6 +19,7 @@ import { mode } from "@chakra-ui/theme-tools";
 
 import CodeMirror from "@uiw/react-codemirror";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+import { EditorView, ViewUpdate } from '@codemirror/view';
 import { languages } from "@codemirror/language-data";
 
 export default function MarkdownBody() {
@@ -89,29 +91,37 @@ export default function MarkdownBody() {
         <label htmlFor="markdownEditor">Markdown editor</label>
       </VisuallyHidden>
       {isCodemirror ? (
-        <Box
+        <Stack
           fontFamily={"var(--chakra-fonts-code)"}
           maxW={{ base: "100vw", md: "50vw" }}
+          pb="12"
         >
           <CodeMirror
             className="markdown-codemirror"
+            autoFocus={true}
+            basicSetup={{
+              lineNumbers: false,
+              autocompletion: true,
+            }}
             id="markdownCodemirror"
             data-testid="markdownCodemirror"
             placeholder="Markdown is awesome!!"
-            height="calc(100vh - 80px)"
+            height="max(86vh, calc(100vh - 120px))" // Else last line if overflows isn't visible.
             theme={theme}
             value={activeNote?.content ? activeNote.content : ""}
             onChange={onChangeCodemirror}
             extensions={[
+              EditorView.lineWrapping, // https://discuss.codemirror.net/t/how-to-use-line-wrapping-in-codemirror-6/4924/2
               markdown({
                 base: markdownLanguage,
                 codeLanguages: languages,
               }),
             ]}
           />
-        </Box>
+        </Stack>
       ) : (
         <Textarea
+          autoFocus={true}
           id="markdownTextarea"
           className="markdown-editor"
           data-testid="markdownTextArea"
@@ -122,7 +132,7 @@ export default function MarkdownBody() {
           boxSize={"full"}
           w="full"
           p="4"
-          height="calc(100vh - 80px)"
+          // height={{ base: "calc(100vh - 115px)", md: "calc(100vh - 90px)" }}
           rounded="none"
           borderColor="transparent"
           outlineColor="transparent"

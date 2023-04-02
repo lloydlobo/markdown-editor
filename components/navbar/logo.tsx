@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <ChakraLink as={ChakraLink} href="/">
       <Box
-        display={{ sm: "none", md: "flex" }}
+        // display={{ sm: "none", md: "flex" }}
         alignItems="center"
         pr="4"
         borderInlineEnd="thin"

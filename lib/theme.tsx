@@ -12,7 +12,7 @@ const config: ThemeConfig = {
 const styles = {
   global: (props: Record<string, any>) => ({
     body: {
-      bg: mode("gray.50", "gray.900")(props),
+      bg: mode("blackAlpha.50", "gray.900")(props),
       color: mode("gray.600", "gray.50")(props),
       fontFamily: "body",
       lineHeight: "base",
